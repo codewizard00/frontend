@@ -4,24 +4,32 @@ import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
-import {GoogleAuthProvider,signInWithPopup,FacebookAuthProvider,signOut} from "firebase/auth"
+import { GoogleAuthProvider, signInWithPopup, FacebookAuthProvider, signOut } from "firebase/auth"
 import { auth } from '../Firebase';
-// import {  signInWithPopup, FacebookAuthProvider } from "firebase/auth";
+import axios from 'axios';
+import EmailVerify from '../EmailVerify';
 
 const Register = () => {
+    const [userName, setUserName] = React.useState("")
+    const [email, setEmail] = React.useState("")
+    const [password, setPassword] = React.useState("")
+    const [phone, setPhone] = React.useState("")
+    const [emalLogin, setEmailLogin] = React.useState("")
+    const [passwordLogin, setPasswordLogin] = React.useState("")
 
-    const googleSignIn=async()=>{
+
+    const googleSignIn = async () => {
         const provider = new GoogleAuthProvider()
-        const data =await signInWithPopup(auth,provider)
+        const data = await signInWithPopup(auth, provider)
         console.log(data);
     }
-    const logout=async()=>{
-        const data =await signOut(auth);
+    const logout = async () => {
+        const data = await signOut(auth);
         console.log(data)
     }
-    const facebookSignIn=async()=>{
+    const facebookSignIn = async () => {
         const provider = new FacebookAuthProvider()
-        const data =await signInWithPopup(auth,provider)
+        const data = await signInWithPopup(auth, provider)
         console.log(data);
     }
 
@@ -30,9 +38,67 @@ const Register = () => {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
+
+    const signUp = (e) => {
+        e.preventDefault();
+        var axios = require('axios');
+        var data = JSON.stringify({
+            "email": emalLogin,
+            "password": passwordLogin
+        });
+
+        var config = {
+            method: 'post',
+            url: 'http://localhost:8080/user/login',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data: data
+        };
+
+        axios(config)
+            .then(function (response) {
+                console.log(JSON.stringify(response.data));
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+    }
+
+    const signIn = (e) => {
+        e.preventDefault();
+        var data = JSON.stringify({
+            "username": userName,
+            "email": email,
+            "password": password,
+            "phone": phone
+        });
+
+        var config = {
+            method: 'post',
+            url: 'http://localhost:8080/user/register',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data: data
+        };
+
+        axios(config)
+            .then(function (response) {
+                console.log(JSON.stringify(response.data));
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+    }
+
+
+
     return (
         <>
-
+        <EmailVerify email={email}/>
             <section class="bg-[#F4F7FF] py-4 lg:py-[120px]">
                 <div class="container mx-auto">
                     <div class="-mx-4 flex flex-wrap">
@@ -63,6 +129,8 @@ const Register = () => {
                                             <form>
                                                 <div class="mb-6">
                                                     <input
+                                                        value={emalLogin}
+                                                        onChange={(e) => { setEmailLogin(e.target.value) }}
                                                         type="text"
                                                         placeholder="Email"
                                                         class="bordder-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none focus:border-primary focus-visible:shadow-none"
@@ -70,6 +138,8 @@ const Register = () => {
                                                 </div>
                                                 <div class="mb-6">
                                                     <input
+                                                        value={passwordLogin}
+                                                        onChange={(e) => { setPassword(e.target.value) }}
                                                         type="password"
                                                         placeholder="Password"
                                                         class="bordder-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none focus:border-primary focus-visible:shadow-none"
@@ -78,10 +148,10 @@ const Register = () => {
                                                 <div class="mb-10">
                                                     <button
                                                         type="submit"
-
+                                                        onClick={(e) => { signUp(e) }}
                                                         class="bordder-primary w-full cursor-pointer rounded-md border bg-primary py-3 px-5 text-base text-white transition hover:bg-opacity-90"
                                                     >
-                                                        Sign In
+                                                        Sign Up
                                                     </button>
                                                 </div>
                                             </form>
@@ -89,7 +159,7 @@ const Register = () => {
                                             <ul class="-mx-2 mb-12 flex justify-between">
                                                 <li class="w-full px-2">
                                                     <a
-                                                        onClick={()=>{googleSignIn()}}
+                                                        onClick={() => { googleSignIn() }}
                                                         class="flex h-11 items-center justify-center rounded-md bg-[#4064AC] hover:bg-opacity-90"
                                                     >
                                                         <svg
@@ -108,7 +178,7 @@ const Register = () => {
                                                 </li>
                                                 <li class="w-full px-2">
                                                     <a
-                                                        onClick={()=>facebookSignIn()}
+                                                        onClick={() => facebookSignIn()}
                                                         class="flex h-11 items-center justify-center rounded-md bg-[#1C9CEA] hover:bg-opacity-90"
                                                     >
                                                         <svg
@@ -127,7 +197,7 @@ const Register = () => {
                                                 </li>
                                                 <li class="w-full px-2">
                                                     <a
-                                                        onClick={()=>{logout()}}
+                                                        onClick={() => { logout() }}
                                                         class="flex h-11 items-center justify-center rounded-md bg-[#D64937] hover:bg-opacity-90"
                                                     >
                                                         <svg
@@ -176,6 +246,8 @@ const Register = () => {
                                             <form>
                                                 <div class="mb-6">
                                                     <input
+                                                        value={userName}
+                                                        onChange={(e) => { setUserName(e.target.value) }}
                                                         type="text"
                                                         placeholder="Username"
                                                         class="bordder-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none focus:border-primary focus-visible:shadow-none"
@@ -183,6 +255,8 @@ const Register = () => {
                                                 </div>
                                                 <div class="mb-6">
                                                     <input
+                                                        value={email}
+                                                        onChange={(e) => { setEmail(e.target.value) }}
                                                         type="text"
                                                         placeholder="Email"
                                                         class="bordder-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none focus:border-primary focus-visible:shadow-none"
@@ -190,6 +264,8 @@ const Register = () => {
                                                 </div>
                                                 <div class="mb-6">
                                                     <input
+                                                        value={phone}
+                                                        onChange={(e) => { setPhone(e.target.value) }}
                                                         type="text"
                                                         placeholder="Phone"
                                                         class="bordder-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none focus:border-primary focus-visible:shadow-none"
@@ -197,6 +273,8 @@ const Register = () => {
                                                 </div>
                                                 <div class="mb-6">
                                                     <input
+                                                        value={password}
+                                                        onChange={(e) => { setPassword(e.target.value) }}
                                                         type="password"
                                                         placeholder="Password"
                                                         class="bordder-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none focus:border-primary focus-visible:shadow-none"
@@ -205,7 +283,7 @@ const Register = () => {
                                                 <div class="mb-10">
                                                     <button
                                                         type="submit"
-
+                                                        onClick={(e) => { signIn(e) }}
                                                         class="bordder-primary w-full cursor-pointer rounded-md border bg-primary py-3 px-5 text-base text-white transition hover:bg-opacity-90"
                                                     >
                                                         Sign In

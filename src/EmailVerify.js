@@ -1,18 +1,27 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import axios from 'axios';
+import OtpInput from 'react-otp-input';
 
-const EmailVerify = () => {
-    const params = useParams();
-    useEffect(() => {
+const EmailVerify = ({ email }) => {
+
+    const [token, setToken] = useState("");
+    const verify = () => {
+        var data = JSON.stringify({
+            "email": email,
+            "token": token
+        });
+
         var config = {
-            method: 'get',
-            url: `http://localhost:8080/emailVerify/${params.token}`,
+            method: 'post',
+            url: 'http://localhost:8080/emailVerify',
             headers: {
                 'Content-Type': 'application/json'
             },
+            data: data
         };
+
         axios(config)
             .then(function (response) {
                 console.log(JSON.stringify(response.data));
@@ -20,25 +29,36 @@ const EmailVerify = () => {
             .catch(function (error) {
                 console.log(error);
             });
-    }, [])
+
+    }
 
     return (
         <>
-            <section class="thank-you padding-y-2xl">
-                <div class="container max-width-adaptive-sm text-center">
-                    <svg class="thank-you__icon margin-bottom-sm margin-x-auto" viewBox="0 0 80 80" aria-hidden="true"><g class="thank-you__icon-group"><circle fill="var(--color-success)" cx="40" cy="40" r="40" /><polyline points="21 41 33 53 59 27" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2" /></g></svg>
-
-                    <div class="text-component">
-                        <h1 class="text-3xl">Order Confirmed</h1>
-                        <p class="color-contrast-medium">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi aliquid qui et saepe omnis ipsum amet quasi accusamus.</p>
-
-                        <p class="flex flex-wrap flex-column flex-row@xs gap-2xs justify-center">
-                            <Link to="/" class="btn btn--subtle" href="#0">Back To Home</Link>
-                            <Link to="/signup" class="btn btn--primary" href="#0">Login</Link>
-                        </p>
+            <div class="h-screen bg-blue-500 py-20 px-3">
+                <div class="container mx-auto">
+                    <div class="max-w-sm mx-auto md:max-w-lg">
+                        <div class="w-full">
+                            <div class="bg-white h-64 py-3 rounded text-center">
+                                <h1 class="text-2xl font-bold">OTP Verification</h1>
+                                <div class="flex flex-col mt-4">
+                                    <span>Enter the OTP you received at</span>
+                                    <span class="font-bold"></span>
+                                </div>
+                                <OtpInput
+                                    inputStyle="m-2 border h-10 w-10!importantz text-center form-control rounded"
+                                    value={token}
+                                    onChange={setToken}
+                                    numInputs={6}
+                                    separator={<span>-</span>}
+                                />
+                                <div class="flex justify-center text-center mt-5">
+                                    <a class="flex items-center text-blue-700 hover:text-blue-900 cursor-pointer"><span class="font-bold">Resend OTP</span><i class='bx bx-caret-right ml-1'></i></a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </section>
+            </div>
         </>
     )
 }
