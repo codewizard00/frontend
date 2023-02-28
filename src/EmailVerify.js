@@ -2,20 +2,49 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import axios from 'axios';
-import OtpInput from 'react-otp-input';
+import OTPInput, { ResendOTP } from "otp-input-react";
+import { useNavigate } from "react-router-dom";
+import Toaster from "./toaster";
+
 
 const EmailVerify = ({ email }) => {
-
+    const navigate = useNavigate()
     const [token, setToken] = useState("");
     const verify = () => {
         var data = JSON.stringify({
             "email": email,
             "token": token
         });
-
         var config = {
             method: 'post',
             url: 'http://localhost:8080/emailVerify',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data: data
+        };
+
+        axios(config)
+            .then(function (response) {
+                if (response.status === 200) {
+                    localStorage.setItem("userInfo", JSON.stringify(response.data))
+                    Toaster("success","Succesfully Sign Up.")
+                    navigate("/")
+                }
+            })
+            .catch(function (error) {
+                Toaster("error","Invalid OTP.")
+                console.log(error);
+            });
+    }
+    const resendOTP = () => {
+        var data = JSON.stringify({
+            "email": email
+        });
+
+        var config = {
+            method: 'post',
+            url: 'http://localhost:8080/resendOtp',
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -32,28 +61,20 @@ const EmailVerify = ({ email }) => {
 
     }
 
+
     return (
         <>
-            <div class="h-screen bg-blue-500 py-20 px-3">
+
+            <div class=" bg-gray-200 py-20 px-3">
                 <div class="container mx-auto">
                     <div class="max-w-sm mx-auto md:max-w-lg">
                         <div class="w-full">
                             <div class="bg-white h-64 py-3 rounded text-center">
                                 <h1 class="text-2xl font-bold">OTP Verification</h1>
-                                <div class="flex flex-col mt-4">
-                                    <span>Enter the OTP you received at</span>
-                                    <span class="font-bold"></span>
-                                </div>
-                                <OtpInput
-                                    inputStyle="m-2 border h-10 w-10!importantz text-center form-control rounded"
-                                    value={token}
-                                    onChange={setToken}
-                                    numInputs={6}
-                                    separator={<span>-</span>}
-                                />
-                                <div class="flex justify-center text-center mt-5">
-                                    <a class="flex items-center text-blue-700 hover:text-blue-900 cursor-pointer"><span class="font-bold">Resend OTP</span><i class='bx bx-caret-right ml-1'></i></a>
-                                </div>
+                                <OTPInput value={token} style={{ display: "flex", justifyContent: "center", margin: "30px" }} inputStyles={{ border: "1px solid black" }} onChange={setToken} autoFocus OTPLength={6} otpType="number" disabled={false} secure={false} />
+                                <button onClick={() => { verify(); console.log("clikced") }} className="w-40 h-10 bg-blue-700 text-gray-100 font-bold rounded-lg">Verify</button>
+                                <ResendOTP style={{ margin: "20px" }} onResendClick={() => resendOTP()} />
+
                             </div>
                         </div>
                     </div>

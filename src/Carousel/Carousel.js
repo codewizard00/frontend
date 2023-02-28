@@ -2,7 +2,33 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import BlogCard from "../Card/BlogCard";
+import axios from "axios";
+import { useEffect, useState } from "react";
+
 const ImageCarousel = () => {
+
+    const [data,setData] = useState([]);
+
+    const getAllCompetition = () => {
+        var config = {
+            method: 'get',
+            url: 'http://localhost:8080/get/AllCompetion',
+            headers: {}
+        };
+
+        axios(config)
+            .then(function (response) {
+                setData(response.data.message)
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+    useEffect(()=>{
+        getAllCompetition();
+    },[])
+
     return (
         <>
             <div className="flex mx-auto my-10">
@@ -62,10 +88,9 @@ const ImageCarousel = () => {
                         slidesToSlide={1}
                         swipeable
                     >
-                        <BlogCard />
-                        <BlogCard />
-                        <BlogCard />
-                        <BlogCard />
+                    {data.map((value,index)=>(
+                        <BlogCard value={value} key={index} />
+                    ))}   
                     </Carousel>
                 </div>
             </div>

@@ -10,23 +10,29 @@ import PDFReader from "./PDFReader";
 import Register from "./Register/Register";
 import { ScrollToTop } from 'react-router-scroll-to-top';
 import Competition from "./Pages/Competion";
-import EmailVerify from "./EmailVerify";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Event from "./Pages/Events";
 
 export default function App() {
   return (
     <>
+    <ToastContainer/>
       <BrowserRouter>
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/team" element={<Team />} />
-          <Route path="/pdfReader" element={<PDFReader />} />
+          <Route path="/pdfReader/:id" element={<PDFReader />} />
           <Route path="/signup" element={<Register />} />
+          <Route path="/signin" element={<Register />} />
+
           <Route path="/userprofile" element={<UserProfile />} />
-          <Route path="/events" element={<BlogPages />} />
+          <Route path="/events/:id" element={<BlogPages />} />
+          <Route path="/events" element={<Event />} />
+
           <Route path="/competition" element={<Competition />} />
-          <Route path="/emailverify/:token" element={<EmailVerify />} />
 
         </Routes>
       </BrowserRouter>

@@ -8,15 +8,19 @@ import { GoogleAuthProvider, signInWithPopup, FacebookAuthProvider, signOut } fr
 import { auth } from '../Firebase';
 import axios from 'axios';
 import EmailVerify from '../EmailVerify';
+import { Modal } from '@mui/material';
+import Toaster from '../toaster';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
+    const navigate = useNavigate();
+    const [open, setOpen] = React.useState(false);
     const [userName, setUserName] = React.useState("")
     const [email, setEmail] = React.useState("")
     const [password, setPassword] = React.useState("")
     const [phone, setPhone] = React.useState("")
     const [emalLogin, setEmailLogin] = React.useState("")
     const [passwordLogin, setPasswordLogin] = React.useState("")
-
 
     const googleSignIn = async () => {
         const provider = new GoogleAuthProvider()
@@ -41,7 +45,6 @@ const Register = () => {
 
     const signUp = (e) => {
         e.preventDefault();
-        var axios = require('axios');
         var data = JSON.stringify({
             "email": emalLogin,
             "password": passwordLogin
@@ -58,13 +61,18 @@ const Register = () => {
 
         axios(config)
             .then(function (response) {
-                console.log(JSON.stringify(response.data));
+                if (response.status === 200) {
+                    localStorage.setItem("userInfo", JSON.stringify(response.data))
+                    Toaster("success", "Succesfully Sign Up.")
+                    navigate("/")
+                }
             })
             .catch(function (error) {
                 console.log(error);
+                Toaster("error", "Invalid Credentials.")
             });
-
     }
+
 
     const signIn = (e) => {
         e.preventDefault();
@@ -77,7 +85,7 @@ const Register = () => {
 
         var config = {
             method: 'post',
-            url: 'http://localhost:8080/user/register',
+            url: `${process.env.REACT_APP_PROD_URL}user/register`,
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -86,6 +94,8 @@ const Register = () => {
 
         axios(config)
             .then(function (response) {
+                setOpen(true)
+                Toaster('success', "Verify Email Sent To Your Email ID.")
                 console.log(JSON.stringify(response.data));
             })
             .catch(function (error) {
@@ -94,11 +104,23 @@ const Register = () => {
 
     }
 
+    React.useEffect(() => {
+        if (window.location.pathname === "/signup") {
+            setValue("2");
+        }
+    }, [])
 
 
     return (
         <>
-        <EmailVerify email={email}/>
+            <Modal
+                open={open}
+                onClose={() => { setOpen(false) }}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <EmailVerify email={email} />
+            </Modal>
             <section class="bg-[#F4F7FF] py-4 lg:py-[120px]">
                 <div class="container mx-auto">
                     <div class="-mx-4 flex flex-wrap">
@@ -106,11 +128,11 @@ const Register = () => {
                             <div
                                 class="relative mx-auto max-w-[525px] overflow-hidden rounded-lg bg-white py-16 px-10 text-center sm:px-12 md:px-[60px]"
                             >
-                                <TabContext value={value}>
+                                <TabContext style={{ backgroundColor: "rgba(244,245,211,255)" }} value={value}>
                                     <Box className="-mt-10 mb-4">
                                         <TabList onChange={handleChange} aria-label="lab API tabs example">
-                                            <Tab label="Sign In" value="1" />
-                                            <Tab label="Sign Up" value="2" />
+                                            <Tab label="Sign Up" value="1" />
+                                            <Tab label="Sign In" value="2" />
                                         </TabList>
                                     </Box>
                                     <TabPanel value="1" className='bg-cream'>
@@ -139,7 +161,7 @@ const Register = () => {
                                                 <div class="mb-6">
                                                     <input
                                                         value={passwordLogin}
-                                                        onChange={(e) => { setPassword(e.target.value) }}
+                                                        onChange={(e) => { setPasswordLogin(e.target.value) }}
                                                         type="password"
                                                         placeholder="Password"
                                                         class="bordder-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none focus:border-primary focus-visible:shadow-none"
@@ -230,7 +252,7 @@ const Register = () => {
                                         </div>
                                     </TabPanel>
 
-                                    <TabPanel value="2">
+                                    <TabPanel className='bg-cream' value="2">
                                         <>
                                             <div class="mb-10 text-center md:mb-16">
                                                 <a

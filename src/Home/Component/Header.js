@@ -1,10 +1,17 @@
-import React from "react";
+import { Avatar } from "@mui/material";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
+  const [loggedIn, setLoggedIn] = useState(false)
+  useEffect(() => {
+    if (localStorage.getItem('userInfo').length > 10) {
+
+      setLoggedIn(false)
+    }
+  }, [])
+
   const [open, setOpen] = React.useState(false);
-  const [flyer, setFlyer] = React.useState(false);
-  const [flyerTwo, setFlyerTwo] = React.useState(false);
 
   return (
     <>
@@ -79,19 +86,32 @@ const NavBar = () => {
               </div>
             </form>
             <div className="hidden lg:flex items-center justify-end md:flex-1 lg:w-0">
+              {loggedIn &&
+                <>
+                  <Link
+                    to="/signin"
+                    className="whitespace-nowrap font-bold text-navy text-base text-gray-500 hover:text-gray-900"
+                  >
+                    साइन इन करें
+                  </Link>
+                  <Link
+                    to="/signup"
+                    className="ml-8  bg-navy whitespace-nowrap font-senibold inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base text-white "
+                  >
+                    साइन अप करे
+                  </Link>
+                </>
+              }
+              {!loggedIn &&
+                <>
+                  <div className="flex gap-2 ">
+                    <Avatar className="h-3">G</Avatar>
+                    <h2 className="mt-2 text-base font-bold">Ganesh</h2>
+                  </div>
 
-              <Link
-                to="/signup"
-                className="whitespace-nowrap font-bold text-navy text-base text-gray-500 hover:text-gray-900"
-              >
-                साइन इन करें
-              </Link>
-              <Link
-                to="/signup"
-                className="ml-8  bg-navy whitespace-nowrap font-senibold inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base text-white "
-              >
-                साइन अप करे
-              </Link>
+                </>
+              }
+
               <div className="-mr-2 -my-2 lg:hidden">
                 <button
                   type="button"
@@ -361,6 +381,12 @@ const NavBar = () => {
                         प्रतियोगिता
                       </span>
                     </Link>
+                    {!loggedIn &&
+                      <div className="flex gap-2 ">
+                        <Avatar className="h-3">G</Avatar>
+                        <h2 className="mt-2 text-base font-bold">Ganesh</h2>
+                      </div>
+                    }
                   </nav>
                 </div>
               </div>
@@ -416,20 +442,34 @@ const NavBar = () => {
                 </a>
               </div> */}
                 <div>
-                  <Link
-                    to="/signup"
-                    className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-navy hover:bg-navy"
-                  >
-                    साइन अप करें
-                  </Link>
-                  <Link to="/signup">
-                    <p className="mt-6 text-center text-base font-medium text-gray-500">
-                      मौजूदा उपयोगकर्ता?
-                      <p className="text-indigo-600 hover:text-indigo-500">
-                        साइन इन करें
-                      </p>
-                    </p>
-                  </Link>
+                  {loggedIn &&
+                    <>
+                      <Link
+                        to="/signin"
+                        className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-navy hover:bg-navy"
+                      >
+                        साइन अप करें
+                      </Link>
+                      <Link to="/signup">
+                        <p className="mt-6 text-center text-base font-medium text-gray-500">
+                          मौजूदा उपयोगकर्ता?
+                          <p className="text-indigo-600 hover:text-indigo-500">
+                            साइन इन करें
+                          </p>
+                        </p>
+                      </Link>
+                    </>
+                  }
+                  {!loggedIn &&
+                    <>
+                      <Link
+                        to="/signin"
+                        className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-navy hover:bg-navy"
+                      >
+                        Logout
+                      </Link>
+                    </>
+                  }
                 </div>
               </div>
             </div>
