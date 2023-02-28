@@ -106,8 +106,8 @@ const NavBar = () => {
               {!loggedIn &&
                 <>
                   <div className="flex gap-2 ">
-                    <Avatar className="h-3">G</Avatar>
-                    <h2 className="mt-2 text-base font-bold">Ganesh</h2>
+                    <Avatar className="h-3">{name.charAt(0)}</Avatar>
+                    <h2 className="mt-2 text-base font-bold">{name}</h2>
                   </div>
 
                 </>
@@ -382,14 +382,14 @@ const NavBar = () => {
                         प्रतियोगिता
                       </span>
                     </Link>
-                      {!loggedIn &&
-                        <>
-                          <div className="flex gap-2 relative">
-                            <Avatar className="h-3">{name.charAt(0)}</Avatar>
-                            <h2 className="mt-2 text-base font-bold">{name}</h2>
-                          </div>
-                        </>
-                      }
+                    {!loggedIn &&
+                      <>
+                        <div className="flex gap-2 relative">
+                          <Avatar className="h-3">{name.charAt(0)}</Avatar>
+                          <h2 className="mt-2 text-base font-bold">{name}</h2>
+                        </div>
+                      </>
+                    }
                   </nav>
                 </div>
               </div>
