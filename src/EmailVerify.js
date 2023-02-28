@@ -27,7 +27,7 @@ const EmailVerify = ({ email }) => {
         axios(config)
             .then(function (response) {
                 if (response.status === 200) {
-                    localStorage.setItem("userInfo", JSON.stringify(response.data))
+                    localStorage.setItem("userInfo", JSON.stringify(response.data.message))
                     Toaster("success","Succesfully Sign Up.")
                     navigate("/")
                 }

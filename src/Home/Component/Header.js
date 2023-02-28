@@ -3,11 +3,12 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
-  const [loggedIn, setLoggedIn] = useState(false)
+  const [loggedIn, setLoggedIn] = useState(true)
+  const [name, setName] = useState("");
   useEffect(() => {
-    if (localStorage.getItem('userInfo').length > 10) {
-
+    if (localStorage?.getItem('userInfo')) {
       setLoggedIn(false)
+      setName(localStorage.getItem('userInfo').split('"')[7])
     }
   }, [])
 
@@ -142,7 +143,7 @@ const NavBar = () => {
               <button
                 type="button"
                 className="bg-cream rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-yellow-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
-                onClick={() => { setOpen(!open); console.log(open) }}
+                onClick={() => { setOpen(!open) }}
               >
                 <span className="sr-only">Open menu</span>
                 {/* Heroicon name: outline/menu */}
@@ -381,12 +382,14 @@ const NavBar = () => {
                         प्रतियोगिता
                       </span>
                     </Link>
-                    {!loggedIn &&
-                      <div className="flex gap-2 ">
-                        <Avatar className="h-3">G</Avatar>
-                        <h2 className="mt-2 text-base font-bold">Ganesh</h2>
-                      </div>
-                    }
+                      {!loggedIn &&
+                        <>
+                          <div className="flex gap-2 relative">
+                            <Avatar className="h-3">{name.charAt(0)}</Avatar>
+                            <h2 className="mt-2 text-base font-bold">{name}</h2>
+                          </div>
+                        </>
+                      }
                   </nav>
                 </div>
               </div>
@@ -464,9 +467,11 @@ const NavBar = () => {
                     <>
                       <Link
                         to="/signin"
+
                         className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-navy hover:bg-navy"
                       >
-                        Logout
+                        <button onClick={() => { localStorage.clear() }}> Logout</button>
+
                       </Link>
                     </>
                   }
