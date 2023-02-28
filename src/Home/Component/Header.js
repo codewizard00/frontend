@@ -106,7 +106,7 @@ const NavBar = () => {
               {!loggedIn &&
                 <>
                   <div className="flex gap-2 ">
-                    <Avatar className="h-3">{name.charAt(0)}</Avatar>
+                    <Avatar className="h-3">{name?.charAt(0)}</Avatar>
                     <h2 className="mt-2 text-base font-bold">{name}</h2>
                   </div>
 
@@ -385,7 +385,7 @@ const NavBar = () => {
                     {!loggedIn &&
                       <>
                         <div className="flex gap-2 relative">
-                          <Avatar className="h-3">{name.charAt(0)}</Avatar>
+                          <Avatar className="h-3">{name?.charAt(0)}</Avatar>
                           <h2 className="mt-2 text-base font-bold">{name}</h2>
                         </div>
                       </>
