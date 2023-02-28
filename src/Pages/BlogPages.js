@@ -13,7 +13,7 @@ const BlogPages = () => {
     const getCompetionById = () => {
         var config = {
             method: 'get',
-            url: `http://localhost:8080/get/competition/${id}`,
+            url: `${process.env.REACT_APP_PROD_URL}get/competition/${id}`,
             headers: {}
         };
 

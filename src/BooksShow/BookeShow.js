@@ -8,7 +8,7 @@ const BookShow = () => {
     const GetAllBook = () => {
         var config = {
             method: 'get',
-            url: 'http://localhost:8080/get/AllBook',
+            url: `${process.env.REACT_APP_PROD_URL}get/AllBook`,
             headers: {}
         };
 

@@ -17,7 +17,7 @@ const EmailVerify = ({ email }) => {
         });
         var config = {
             method: 'post',
-            url: 'http://localhost:8080/emailVerify',
+            url: `${process.env.REACT_APP_PROD_URL}emailVerify`,
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -44,7 +44,7 @@ const EmailVerify = ({ email }) => {
 
         var config = {
             method: 'post',
-            url: 'http://localhost:8080/resendOtp',
+            url: `${process.env.REACT_APP_PROD_URL}resendOtp`,
             headers: {
                 'Content-Type': 'application/json'
             },

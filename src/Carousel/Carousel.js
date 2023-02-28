@@ -12,7 +12,7 @@ const ImageCarousel = () => {
     const getAllCompetition = () => {
         var config = {
             method: 'get',
-            url: 'http://localhost:8080/get/AllCompetion',
+            url: `${process.env.REACT_APP_PROD_URL}get/AllCompetion`,
             headers: {}
         };
 

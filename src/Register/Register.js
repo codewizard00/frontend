@@ -52,7 +52,7 @@ const Register = () => {
 
         var config = {
             method: 'post',
-            url: 'http://localhost:8080/user/login',
+            url: `${process.env.REACT_APP_PROD_URL}user/login`,
             headers: {
                 'Content-Type': 'application/json'
             },

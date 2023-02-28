@@ -15,7 +15,7 @@ const HomeCarousel = () => {
     const getAllBanner = () => {
         var config = {
             method: 'get',
-            url: 'http://localhost:8080/get/AllBanner',
+            url: `${process.env.REACT_APP_PROD_URL}/get/AllBanner`,
             headers: {}
         };
 

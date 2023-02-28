@@ -8,7 +8,7 @@ const Team = () => {
     const GetAllTeams = () => {
         var config = {
             method: 'get',
-            url: 'http://localhost:8080/get/Allteams',
+            url: `${process.env.REACT_APP_PROD_URL}get/Allteams`,
             headers: {}
         };
 

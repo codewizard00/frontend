@@ -25,7 +25,7 @@ const PDFReader = () => {
   const getBookById = () => {
     var config = {
       method: 'get',
-      url: `http://localhost:8080/get/books/${id}`,
+      url: `${process.env.REACT_APP_PROD_URL}get/books/${id}`,
       headers: {}
     };
 
