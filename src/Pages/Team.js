@@ -48,7 +48,7 @@ const Team = () => {
                                     <div class="px-6 mt-16">
                                         <h1 class="font-bold dark:text-white text-3xl text-center mb-1">{value.fullName}</h1>
                                         <p class="text-gray-800 dark:text-white text-sm text-center">{value.place} ,{value.position}</p>
-                                        <p class="text-center text-gray-600 dark:text-gray-200 text-base pt-3 font-normal">{value.about}</p>
+                                        <p class="text-center text-gray-600 dark:text-gray-200 text-base pt-3 pb-5 font-normal">{value.about}</p>
                                         {/* <div class="w-full flex justify-center pt-5 pb-5">
                                             <a href="javascript:void(0)" class="mx-5">
                                                 <div aria-label="Github" role="img">
