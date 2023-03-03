@@ -1,7 +1,7 @@
 const Newsletter = () => {
     return (
         <>
-            <div class="container my-24 px-6 mx-auto">
+            <div class="container max-w-screen-xl my-24 px-6 mx-auto">
 
                 <section class="mb-32 text-gray-800">
                     <div
