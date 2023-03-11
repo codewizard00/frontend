@@ -13,6 +13,8 @@ import Competition from "./Pages/Competion";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Event from "./Pages/Events";
+import BlogIndex from "./Pages/BlogIndex";
+import Gallery from "./Gallery/Gallery";
 
 export default function App() {
   return (
@@ -27,10 +29,10 @@ export default function App() {
           <Route path="/pdfReader/:id" element={<PDFReader />} />
           <Route path="/signup" element={<Register />} />
           <Route path="/signin" element={<Register />} />
-
+          <Route path="/gallery" element={<Gallery/>}/>
           <Route path="/userprofile" element={<UserProfile />} />
           <Route path="/events/:id" element={<BlogPages />} />
-          <Route path="/events" element={<Event />} />
+          <Route path="/events" element={<BlogIndex />} />
 
           <Route path="/competition" element={<Competition />} />
 

@@ -2,6 +2,7 @@ import '../Home/Home.scss'
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import "./Book.scss"
 
 const BookShow = () => {
     const [data, setData] = useState([])
@@ -27,49 +28,89 @@ const BookShow = () => {
     }, [])
 
     return (
-        <div className='my-10'>
-            <h1 className='text-4xl font-bold text-center underline-offset-2'>ई पत्रिका</h1>
-            <div className="w-4/5 mx-auto flex">
-                <div className="w-[0%] lg:w-1/4 ">
-                    <img src="https://res.cloudinary.com/valarmorghullis/image/upload/v1674907736/Premsudha/aksh_n31d5f.jpg" />
-                </div>
-
-                <div class="book-cards w-full lg:w-3/4">
-                    {data.map((value, index) => (
-                        <>
-                            <Link to={`/pdfReader/${value.id}`}>
-                                <div class="book-card">
-                                    <div class="content-wrapper">
-                                        <img src={`${value.image}`} alt="" class="book-card-img" />
-                                        <div class="card-content">
-                                            <div class="book-name">{value.title}</div>
-                                            <div class="book-by">{value.createdAt}</div>
-                                            <div class="rate">
-                                                <fieldset class="rating book-rate">
-                                                    <input type="checkbox" id="star-c1" name="rating" value="5" />
-                                                    <label class="full" for="star-c1"></label>
-                                                    <input type="checkbox" id="star-c2" name="rating" value="4" />
-                                                    <label class="full" for="star-c2"></label>
-                                                    <input type="checkbox" id="star-c3" name="rating" value="3" />
-                                                    <label class="full" for="star-c3"></label>
-                                                    <input type="checkbox" id="star-c4" name="rating" value="2" />
-                                                    <label class="full" for="star-c4"></label>
-                                                    <input type="checkbox" id="star-c5" name="rating" value="1" />
-                                                    <label class="full" for="star-c5"></label>
-                                                </fieldset>
-                                            </div>
-                                            <div class="book-sum card-sum">{value.about}</div>
-                                        </div>
-                                    </div>
-                                    <div class="likes">
-                                        <div class="like-name"><span>Aadarsh Kumar</span> and<span> 2 other friends</span> like this</div>
-                                    </div>
+        <div>
+        <div className='my-10  bg-gray-100'>
+            <div className='flex space-around'>
+            <h1 className='py-10 text-3xl'>ई पत्रिका</h1>
+            </div>
+            <div class="containe flex flex-wrap justify-center gap-20">
+                <div class="mobile-layout">
+                    <div class="book-cover">
+                        <img class="book-top" src="https://res.cloudinary.com/valarmorghullis/image/upload/v1674907736/Premsudha/aksh_n31d5f.jpg" alt="book-top" />
+                        <img class="book-side" src="https://raw.githubusercontent.com/atomic-variable/images-repo/e37f432405904a280858e5437ce1960753bc78a3/book-side.svg" alt="book-side" />
+                    </div>
+                    <div class="preface">
+                        <div class="content">
+                            <div class="header">
+                                <div class="title">The Diary of a Young Girl</div>
+                                <div class="icon">
+                                    <i class="fas fa-chevron-down"></i>
                                 </div>
-                            </Link>
-                        </>
-                    ))}
+                            </div>
+                            <div class="author">by Anne Frank</div>
+                            <div class="body">
+                                <p>
+                                    also known as The Diary of Anne Frank, is a book of the writings from the Dutch-language diary kept by Anne Frank while she was in hiding for two years with her family during the Nazi occupation of the Netherlands
+                                </p>
+                                <p>
+                                    Anne calls her diary "Kitty", so almost all of the letters are written to Kitty.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile-layout">
+                    <div class="book-cover">
+                        <img class="book-top" src="https://res.cloudinary.com/valarmorghullis/image/upload/v1674907736/Premsudha/aksh_n31d5f.jpg" alt="book-top" />
+                        <img class="book-side" src="https://raw.githubusercontent.com/atomic-variable/images-repo/e37f432405904a280858e5437ce1960753bc78a3/book-side.svg" alt="book-side" />
+                    </div>
+                    <div class="preface">
+                        <div class="content">
+                            <div class="header">
+                                <div class="title">The Diary of a Young Girl</div>
+                                <div class="icon">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </div>
+                            <div class="author">by Anne Frank</div>
+                            <div class="body">
+                                <p>
+                                    also known as The Diary of Anne Frank, is a book of the writings from the Dutch-language diary kept by Anne Frank while she was in hiding for two years with her family during the Nazi occupation of the Netherlands
+                                </p>
+                                <p>
+                                    Anne calls her diary "Kitty", so almost all of the letters are written to Kitty.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile-layout">
+                    <div class="book-cover">
+                        <img class="book-top" src="https://res.cloudinary.com/valarmorghullis/image/upload/v1674907736/Premsudha/aksh_n31d5f.jpg" alt="book-top" />
+                        <img class="book-side" src="https://raw.githubusercontent.com/atomic-variable/images-repo/e37f432405904a280858e5437ce1960753bc78a3/book-side.svg" alt="book-side" />
+                    </div>
+                    <div class="preface">
+                        <div class="content">
+                            <div class="header">
+                                <div class="title">The Diary of a Young Girl</div>
+                                <div class="icon">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </div>
+                            <div class="author">by Anne Frank</div>
+                            <div class="body">
+                                <p>
+                                    also known as The Diary of Anne Frank, is a book of the writings from the Dutch-language diary kept by Anne Frank while she was in hiding for two years with her family during the Nazi occupation of the Netherlands
+                                </p>
+                                <p>
+                                    Anne calls her diary "Kitty", so almost all of the letters are written to Kitty.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
         </div>
     )
 }

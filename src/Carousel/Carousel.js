@@ -32,7 +32,7 @@ const ImageCarousel = () => {
     return (
         <>
             <div className="flex mx-auto my-10">
-                <div className="mx-auto w-11/12 xl:w-3/4 text-center">
+                <div className="mx-auto w-11/12 max-w-screen-xl text-center">
                     <h1 className="text-4xl text-orange-500 my-6 font-bold font-[kalam]">कार्यक्रम</h1>
                     <Carousel
                         additionalTransfrom={0}

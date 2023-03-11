@@ -9,7 +9,6 @@ import "swiper/css/pagination";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-
 const HomeCarousel = () => {
     const [data, setData] = useState([]);
     const getAllBanner = () => {
@@ -27,12 +26,14 @@ const HomeCarousel = () => {
                 console.log(error);
             });
     }
+
     useEffect(() => {
         getAllBanner();
     }, [])
 
     return (
         <>
+
             <Swiper spaceBetween={30}
                 effect={"fade"}
                 pagination={{
@@ -48,11 +49,12 @@ const HomeCarousel = () => {
                 {data?.map((value, index) => (
                     <SwiperSlide>
                         <div>
-                            <img style={{ width: "100%", minHeight: "300px" }} src={`${value.image_url}`} alt={`${value.image_alt}`}/>
+                            <img style={{ width: "100%", minHeight: "300px" }} src={`${value.image_url}`} alt={`${value.image_alt}`} />
                         </div>
                     </SwiperSlide>
                 ))}
             </Swiper>
+            
         </>
     )
 }
