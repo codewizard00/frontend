@@ -15,6 +15,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Event from "./Pages/Events";
 import BlogIndex from "./Pages/BlogIndex";
 import Gallery from "./Gallery/Gallery";
+import BookPage from "./Pages/BookPage";
 
 export default function App() {
   return (
@@ -33,7 +34,7 @@ export default function App() {
           <Route path="/userprofile" element={<UserProfile />} />
           <Route path="/events/:id" element={<BlogPages />} />
           <Route path="/events" element={<BlogIndex />} />
-
+          <Route path="/bookPage" element={<BookPage/>}/>
           <Route path="/competition" element={<Competition />} />
 
         </Routes>

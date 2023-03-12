@@ -29,8 +29,7 @@ const Team = () => {
             <NavBar />
             <div class="container flex justify-center mx-auto pt-16">
                 <div>
-                    <p class="text-gray-500 dark:text-gray-200 text-lg font-[kalam] text-center font-normal pb-3">बिल्डिंग टीम</p>
-                    <h1 class="xl:text-4xl text-3xl font-[kalam] text-center text-gray-800 dark:text-white font-extrabold pb-6 sm:w-4/6 w-5/6 mx-auto">
+                    <h1 class="xl:text-4xl text-3xl font-[Hind] text-center text-gray-800 dark:text-white font-extrabold pb-6 sm:w-4/6 w-5/6 mx-auto">
                         संगठन के परदे के पीछे प्रतिभाशाली लोग</h1>
                 </div>
             </div>
