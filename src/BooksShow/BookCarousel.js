@@ -30,11 +30,11 @@ const BookCarousel = () => {
         dots: false,
         infinite: true,
         speed: 700,
-        autoplay:true,
-        autoplaySpeed:1000,
-        speed:1000,
+        autoplay: true,
+        autoplaySpeed: 1000,
+        speed: 1000,
         slidesToScroll: 1,
-        responsive: [{ breakpoint: 200, settings: { slidesToShow: 2 } }, { breakpoint: 768, settings: { slidesToShow: 1 } }, { breakpoint: 1024, settings: { slidesToShow: 2 } }, { breakpoint: 10000, settings: { slidesToShow: 3 } }],
+        responsive: [{ breakpoint: 200, settings: { slidesToShow: 2 } }, { breakpoint: 768, settings: { slidesToShow: 1 } }, { breakpoint: 1024, settings: { slidesToShow: 2 } }, { breakpoint: 10000, settings: { slidesToShow: 2 } }],
         centerMode: true
     };
 
@@ -45,13 +45,13 @@ const BookCarousel = () => {
     }, [])
 
     return (
-        <> 
-        <div className="my-20">
-        <h1 className="text-center text-4xl">Books</h1>
-         <Slider ref={slider} {...settings}>
-                {data && data.map((value, index) => (
-                        <Link to={`/pdfReader/${value.id}`}>
-                            <div class="book-card max-w-screen-sm">
+        <>
+            <div className="my-20 max-w-screen-xl w-[80%] md:w-full mx-auto">
+                <h1 className="text-center text-2xl pb-10 font-[Hind] font-bold md:text-4xl">पुस्तकें</h1>
+                <Slider ref={slider} {...settings} centerMode={false}>
+                    {/* {data && data.map((value, index) => (
+                        <Link to={`/pdfReader/${value.id}`}> */}
+                            {/* <div class="book-card max-w-screen-sm">
                                 <div class="content-wrapper md:flex">
 
                                     <img src={`${value.image}`} alt="" class="book-card-img" />
@@ -79,11 +79,81 @@ const BookCarousel = () => {
                                 <div class="likes">
                                     <div class="like-name"><span>Aadarsh Kumar</span> and<span> 2 other friends</span> like this</div>
                                 </div>
+                            </div> */}
+                            <div class="">
+                                <div
+                                    class="flex flex-col rounded-lg bg-white shadow-lg dark:bg-neutral-700 md:max-w-xl md:flex-row">
+                                    <img
+                                        class="h-96 w-full rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+                                        src="https://mdbootstrap.com/wp-content/uploads/2020/06/vertical.jpg"
+                                        alt="" />
+                                    <div class="flex flex-col justify-start p-6">
+                                        <h5
+                                            class="mb-2 text-xl font-medium text-neutral-800 dark:text-neutral-50">
+                                            Card title
+                                        </h5>
+                                        <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+                                            This is a wider card with supporting text below as a natural
+                                            lead-in to additional content. This content is a little bit
+                                            longer.
+                                        </p>
+                                        <p class="text-xs text-neutral-500 dark:text-neutral-300">
+                                            Last updated 3 mins ago
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
-                        </Link>
-                ))}
-            
-            </Slider>
+                            <div class="">
+                                <div
+                                    class="flex flex-col rounded-lg bg-white shadow-lg dark:bg-neutral-700 md:max-w-xl md:flex-row">
+                                    <img
+                                        class="h-96 w-full rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+                                        src="https://mdbootstrap.com/wp-content/uploads/2020/06/vertical.jpg"
+                                        alt="" />
+                                    <div class="flex flex-col justify-start p-6">
+                                        <h5
+                                            class="mb-2 text-xl font-medium text-neutral-800 dark:text-neutral-50">
+                                            Card title
+                                        </h5>
+                                        <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+                                            This is a wider card with supporting text below as a natural
+                                            lead-in to additional content. This content is a little bit
+                                            longer.
+                                        </p>
+                                        <p class="text-xs text-neutral-500 dark:text-neutral-300">
+                                            Last updated 3 mins ago
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div
+                                    class="flex flex-col rounded-lg bg-white shadow-lg dark:bg-neutral-700 md:max-w-xl md:flex-row">
+                                    <img
+                                        class="h-96 w-full rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+                                        src="https://mdbootstrap.com/wp-content/uploads/2020/06/vertical.jpg"
+                                        alt="" />
+                                    <div class="flex flex-col justify-start p-6">
+                                        <h5
+                                            class="mb-2 text-xl font-medium text-neutral-800 dark:text-neutral-50">
+                                            Card title
+                                        </h5>
+                                        <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+                                            This is a wider card with supporting text below as a natural
+                                            lead-in to additional content. This content is a little bit
+                                            longer.
+                                        </p>
+                                        <p class="text-xs text-neutral-500 dark:text-neutral-300">
+                                            Last updated 3 mins ago
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                         
+                        {/* </Link>
+                    ))} */}
+
+                </Slider>
             </div>
         </>
     )

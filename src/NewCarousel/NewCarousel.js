@@ -21,7 +21,7 @@ const CarouselCards = () => {
     const slider = React.useRef(null);
 
     return (
-        <div className='carouselCards my-20 max-w-screen-xl mx-auto'>
+        <div className='carouselCards my-20 max-w-screen-xl mx-auto w-10/12 md:w-full'>
             <div className="header">
                 <div className="flex">
 
@@ -37,8 +37,8 @@ const CarouselCards = () => {
                 </div>
             </div>
             <div className='max-w-screen-xl mx-auto'>
-                <Slider ref={slider} {...settings}>
-                    <div>
+                <Slider ref={slider} {...settings} className="flex justify-center">
+                    <div className=''>
                         <div class="max-w-sm overflow-hidden rounded-lg bg-white hover:shadow-2xl">
                             <img
                                 src="https://images.unsplash.com/photo-1552581234-26160f608093?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80"

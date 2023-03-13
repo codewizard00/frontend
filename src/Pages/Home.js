@@ -19,11 +19,10 @@ const Home = () => {
             <BookShow />
             <EventGallery />
             <Writer />
-            <CarouselCards />
+            <CarouselCards name={"Blog"}/>
             <HeroSection left={true} />
-            <CarouselCards />
-            <HeroSection left={false} />
-            <CarouselCards />
+            <CarouselCards name={"Competition"}/>
+            <CarouselCards name={"Upcoming Competions"}/>
             <section class="py-10 bg-gray-100 sm:py-16 lg:py-24">
                 <div class="max-w-5xl px-4 mx-auto sm:px-6 lg:px-8">
                     <div class="max-w-2xl mx-auto text-center">
