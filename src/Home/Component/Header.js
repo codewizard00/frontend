@@ -40,7 +40,7 @@ const NavBar = () => {
               >
                 कार्यक्रम
               </Link>
-              <Link
+              {/* <Link
                 to="/pdfReader"
                 className="text-xl font-semibold text-navy"
               >
@@ -51,7 +51,7 @@ const NavBar = () => {
                 className="text-xl font-semibold text-navy"
               >
                 ई पत्रिका
-              </Link>
+              </Link> */}
               <Link
                 to="/team"
                 className="text-xl font-semibold text-navy"

@@ -1,10 +1,42 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Slider from 'react-slick-slider'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-const CarouselCards = () => {
+import axios from 'axios';
+const CarouselCards = ({ name }) => {
+
+    const [value, setValue] = useState("Blog")
+    const [data, setData] = useState([]);
+    const getAllCards = () => {
+        var config = {
+            method: 'get',
+            url: `${process.env.REACT_APP_PROD_URL}get/AllCompetion/${value}`,
+            headers: {}
+        };
+
+        axios(config)
+            .then(function (response) {
+                setData(response.data.message);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+    useEffect(() => {
+        if (name === 'Blog') {
+            setValue('Blog')
+        }
+        else if (name === 'Upcoming Competitions') {
+            setValue('Upcoming-Competitions')
+        }
+        if (name === 'Competitions') {
+            setValue('Competitions')
+        }
+        getAllCards();
+    }, [])
 
     var settings = {
         dots: false,
@@ -24,8 +56,7 @@ const CarouselCards = () => {
         <div className='carouselCards my-20 max-w-screen-xl mx-auto w-10/12 md:w-full'>
             <div className="header">
                 <div className="flex">
-
-                    <h1 className='text-3xl'>Upcoming Live Coaching</h1>
+                    <h1 className='text-3xl'>{name === 'Blog' && 'ब्लॉग'} {name === 'Competitions' && 'प्रतियोगिताएं'} {name === 'Upcoming Competitions' && 'आगामी प्रतियोगिताएं'}</h1>
                 </div>
                 <div className="flex gap-2">
                     <div className="arrow__left border-2 border-gray-500 border-solid hover:text-gray-100 hover:bg-navy hover:border-navy  border-black p-1 rounded-full" onClick={() => slider?.current?.slickPrev()}>
@@ -38,37 +69,39 @@ const CarouselCards = () => {
             </div>
             <div className='max-w-screen-xl mx-auto'>
                 <Slider ref={slider} {...settings} className="flex justify-center">
-                    <div className=''>
-                        <div class="max-w-sm overflow-hidden rounded-lg bg-white hover:shadow-2xl">
-                            <img
-                                src="https://images.unsplash.com/photo-1552581234-26160f608093?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80"
-                                class="aspect-video w-full object-cover"
-                                alt=""
-                            />
-                            <div class="p-4">
-                                <p class="mb-1 text-sm text-primary-500">Andrea Felsted • <time>18 Nov 2022</time></p>
-                                <h3 class="text-xl font-medium text-gray-900">Migrating to Sailboat UI</h3>
-                                <p class="mt-1 text-gray-500">Sailboat UI helps streamline software projects, sprints, tasks, and bug tracking.</p>
-                                <div class="mt-4 flex gap-2">
-                                    <span
-                                        class="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2 py-1 text-xs font-semibold text-blue-600"
-                                    >
-                                        Design
-                                    </span>
-                                    <span
-                                        class="inline-flex items-center gap-1 rounded-full bg-indigo-50 px-2 py-1 text-xs font-semibold text-indigo-600"
-                                    >
-                                        Product
-                                    </span>
-                                    <span
-                                        class="inline-flex items-center gap-1 rounded-full bg-orange-50 px-2 py-1 text-xs font-semibold text-orange-600"
-                                    >
-                                        Develop
-                                    </span>
+                    {data.map((item,index) => (
+                        <div key={index} className=''>
+                            <div class="max-w-sm overflow-hidden rounded-lg bg-white hover:shadow-2xl">
+                                <img
+                                    src={item.image_url}
+                                    class="aspect-video w-full object-cover"
+                                    alt=""
+                                />
+                                <div class="p-4">
+                                    <p class="mb-1 text-sm text-primary-500">Andrea Felsted • <time>18 Nov 2022</time></p>
+                                    <h3 class="text-xl font-medium text-gray-900">Migrating to Sailboat UI</h3>
+                                    <p class="mt-1 text-gray-500">Sailboat UI helps streamline software projects, sprints, tasks, and bug tracking.</p>
+                                    <div class="mt-4 flex gap-2">
+                                        <span
+                                            class="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2 py-1 text-xs font-semibold text-blue-600"
+                                        >
+                                            Design
+                                        </span>
+                                        <span
+                                            class="inline-flex items-center gap-1 rounded-full bg-indigo-50 px-2 py-1 text-xs font-semibold text-indigo-600"
+                                        >
+                                            Product
+                                        </span>
+                                        <span
+                                            class="inline-flex items-center gap-1 rounded-full bg-orange-50 px-2 py-1 text-xs font-semibold text-orange-600"
+                                        >
+                                            Develop
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
-                        </div> 
-                    </div>
+                        </div>
+                    ))}
                 </Slider>
             </div>
         </div>

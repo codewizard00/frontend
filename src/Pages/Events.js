@@ -10,7 +10,7 @@ const Event = () => {
     const getAllCompetition = () => {
         var config = {
             method: 'get',
-            url: `${process.env.REACT_APP_PROD_URL}get/AllCompetion`,
+            url: `${process.env.REACT_APP_PROD_URL}get/AllCompetion/Competitions`,
             headers: {}
         };
 

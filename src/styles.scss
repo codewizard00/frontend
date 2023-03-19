@@ -1,0 +1,55 @@
+$active-button: #14488b;
+$footer-font-color:#bbbbbb;
+$plain-background: #ffffff;
+
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes #{$animation-name} {
+    @content;
+  }
+  @-moz-keyframes #{$animation-name} {
+    @content;
+  }
+  @keyframes #{$animation-name} {
+    @content;
+  }
+}
+
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  animation: #{$str};
+}
+
+@include keyframes(spin) {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  .lcSpinner {
+    margin: auto;
+    position: relative;
+    border: 16px solid $plain-background;
+    border-radius: 50%;
+    border-top: 16px solid $active-button;
+    width: 7.5rem;
+    height: 7.5rem;
+    background: $footer-font-color;
+    z-index: 999;
+    @include animation('spin 2s linear infinite');
+  }
+}

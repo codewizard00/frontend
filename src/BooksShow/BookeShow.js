@@ -1,17 +1,22 @@
 import '../Home/Home.scss'
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import "./Book.scss"
-
+import Slider from 'react-slick-slider'
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const BookShow = () => {
 
 
     const [data, setData] = useState([])
+
     const GetAllBook = () => {
         var config = {
             method: 'get',
-            url: `${process.env.REACT_APP_PROD_URL}get/AllBook`,
+            url: `${process.env.REACT_APP_PROD_URL}get/AllBook/Book`,
             headers: {}
         };
 
@@ -29,90 +34,69 @@ const BookShow = () => {
         GetAllBook();
     }, [])
 
+
+    var settings = {
+        dots: false,
+        infinite: true,
+        speed: 700,
+        autoplay: true,
+        autoplaySpeed: 1000,
+        speed: 1000,
+        slidesToScroll: 1,
+        responsive: [{ breakpoint: 200, settings: { slidesToShow: 1 } }, { breakpoint: 768, settings: { slidesToShow: 1 } }, { breakpoint: 1024, settings: { slidesToShow: 2 } }, { breakpoint: 10000, settings: { slidesToShow: 3 } }],
+
+    };
+
+    const slider = useRef(null);
+
     return (
         <div>
             <div className='my-10 bg-gray-100'>
-                <div className='text-center'>
-                    <h1 className='pt-4 text-2xl md:text-4xl font-bold font-[Hind]'>ई-पत्रिका</h1>
+
+                <div className="max-w-screen-xl flex justify-between mx-auto">
+                    <div className="flex">
+                        <h1 className='text-3xl my-10'>पुस्तकें</h1>
+                    </div>
+                    <div className="flex gap-2">
+                        <div className="arrow__left border-2 border-gray-500 border-solid hover:text-gray-100 hover:bg-navy hover:border-navy  border-black h-10 w-10 mx-auto my-auto flex items-center justify-center rounded-full" onClick={() => slider?.current?.slickPrev()}>
+                            <ArrowBackIcon className="arrow__leftIcon" />
+                        </div>
+                        <div className="arrow__right border-2 border-gray-500 border-solid hover:text-gray-100 hover:bg-navy hover:border-navy  border-black p-1 rounded-full h-10 w-10 mx-auto my-auto flex items-center justify-center" onClick={() => slider?.current?.slickNext()} >
+                            <ArrowForwardIcon className="arrow__rightIcon" />
+                        </div>
+                    </div>
                 </div>
-                <div class="container flex flex-wrap justify-center md:gap-20">
-                  
-                        <div class="mobile-layout">
-                            <div class="book-cover">
-                                <img class="book-top" src="https://res.cloudinary.com/valarmorghullis/image/upload/v1674907736/Premsudha/aksh_n31d5f.jpg" alt="book-top" />
-                                <img class="book-side" src="https://raw.githubusercontent.com/atomic-variable/images-repo/e37f432405904a280858e5437ce1960753bc78a3/book-side.svg" alt="book-side" />
-                            </div>
-                            <div class="preface">
-                                <div class="content">
-                                    <div class="header">
-                                        <div class="title">The Diary of a Young Girl</div>
-                                        <div class="icon">
-                                            <i class="fas fa-chevron-down"></i>
-                                        </div>
+                <div className='max-w-screen-xl mx-auto'>
+                    <Slider ref={slider} {...settings} centerMode={false}>
+                        {data && data.map((item, index) => (
+                            <a href={item.url} target="_blank">
+                            <div class="container flex flex-wrap justify-center md:gap-20">
+                                <div class="mobile-layout">
+                                    <div class="book-cover">
+                                        <img class="book-top" src={`${item.image}`} alt="book-top" />
+                                        <img class="book-side" src="https://raw.githubusercontent.com/atomic-variable/images-repo/e37f432405904a280858e5437ce1960753bc78a3/book-side.svg" alt="book-side" />
                                     </div>
-                                    <div class="author">by Anne Frank</div>
-                                    <div class="body">
-                                        <p>
-                                            also known as The Diary of Anne Frank, is a book of the writings from the Dutch-language diary kept by Anne Frank while she was in hiding for two years with her family during the Nazi occupation of the Netherlands
-                                        </p>
-                                        <p>
-                                            Anne calls her diary "Kitty", so almost all of the letters are written to Kitty.
-                                        </p>
+                                    <div class="preface">
+                                        <div class="content">
+                                            <div class="header">
+                                                <div class="title">{item.title}</div>
+                                                <div class="icon">
+                                                    <i class="fas fa-chevron-down"></i>
+                                                </div>
+                                            </div>
+                                            <div class="author">by {item.writer}</div>
+                                            <div class="body">
+                                              <p>
+                                                {item.about}
+                                              </p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="mobile-layout">
-                            <div class="book-cover">
-                                <img class="book-top" src="https://res.cloudinary.com/valarmorghullis/image/upload/v1674907736/Premsudha/aksh_n31d5f.jpg" alt="book-top" />
-                                <img class="book-side" src="https://raw.githubusercontent.com/atomic-variable/images-repo/e37f432405904a280858e5437ce1960753bc78a3/book-side.svg" alt="book-side" />
-                            </div>
-                            <div class="preface">
-                                <div class="content">
-                                    <div class="header">
-                                        <div class="title">The Diary of a Young Girl</div>
-                                        <div class="icon">
-                                            <i class="fas fa-chevron-down"></i>
-                                        </div>
-                                    </div>
-                                    <div class="author">by Anne Frank</div>
-                                    <div class="body">
-                                        <p>
-                                            also known as The Diary of Anne Frank, is a book of the writings from the Dutch-language diary kept by Anne Frank while she was in hiding for two years with her family during the Nazi occupation of the Netherlands
-                                        </p>
-                                        <p>
-                                            Anne calls her diary "Kitty", so almost all of the letters are written to Kitty.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mobile-layout">
-                            <div class="book-cover">
-                                <img class="book-top" src="https://res.cloudinary.com/valarmorghullis/image/upload/v1674907736/Premsudha/aksh_n31d5f.jpg" alt="book-top" />
-                                <img class="book-side" src="https://raw.githubusercontent.com/atomic-variable/images-repo/e37f432405904a280858e5437ce1960753bc78a3/book-side.svg" alt="book-side" />
-                            </div>
-                            <div class="preface">
-                                <div class="content">
-                                    <div class="header">
-                                        <div class="title">The Diary of a Young Girl</div>
-                                        <div class="icon">
-                                            <i class="fas fa-chevron-down"></i>
-                                        </div>
-                                    </div>
-                                    <div class="author">by Anne Frank</div>
-                                    <div class="body">
-                                        <p>
-                                            also known as The Diary of Anne Frank, is a book of the writings from the Dutch-language diary kept by Anne Frank while she was in hiding for two years with her family during the Nazi occupation of the Netherlands
-                                        </p>
-                                        <p>
-                                            Anne calls her diary "Kitty", so almost all of the letters are written to Kitty.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                  
+                            </a>
+                        ))}
+                    </Slider>
                 </div>
             </div>
         </div>
