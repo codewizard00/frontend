@@ -8,7 +8,7 @@ const EventGallery = () => {
   const getAllBanner = () => {
     var config = {
       method: 'get',
-      url: `${process.env.REACT_APP_PROD_URL}get/AllBanner/Gallery-Carousel`,
+      url: `${process.env.REACT_APP_PROD_URL}get/AllBanner/Event-Gallery`,
       headers: {}
     };
 
@@ -46,10 +46,10 @@ const EventGallery = () => {
               <img src="https://i.ibb.co/cbyDY74/pexels-max-vakhtbovych-6782351-1-1.png" alt="apartment design" class="w-full sm:block hidden" />
             </div>
             <div class="w-full max-w-screen-md scrollbar-hide overflow-x-scroll flex flex-row lg:gap-8 gap-6 lg:mt-8 md:mt-6 mt-4">
-              {data.map(() => (
-                <div>
+              {data.map((item,index) => (
+                <div key={index}>
                   <div className="relative w-96">
-                    <img src="https://i.ibb.co/4Jrp5TB/pexels-max-vakhtbovych-6782370-1.png" class="w-full" alt="kitchen" />
+                    <img src={item.image_url} class="w-full" alt="kitchen" />
                     <div className="absolute bottom-3 right-5">
                       <ArrowForwardIcon className="text-gray-100 border-2 border-solid border-gray-100 rounded-full w-20 h-20" />
                     </div>
