@@ -7,15 +7,14 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import axios from 'axios';
 const CarouselCards = ({ name }) => {
 
-    const [value, setValue] = useState("Blog")
+    
     const [data, setData] = useState([]);
     const getAllCards = () => {
         var config = {
             method: 'get',
-            url: `${process.env.REACT_APP_PROD_URL}get/AllCompetion/${value}`,
+            url: `${process.env.REACT_APP_PROD_URL}get/AllCompetion/${name}`,
             headers: {}
         };
-
         axios(config)
             .then(function (response) {
                 setData(response.data.message);
@@ -26,15 +25,7 @@ const CarouselCards = ({ name }) => {
     }
 
     useEffect(() => {
-        if (name === 'Blog') {
-            setValue('Blog')
-        }
-        else if (name === 'Upcoming Competitions') {
-            setValue('Upcoming-Competitions')
-        }
-        if (name === 'Competitions') {
-            setValue('Competitions')
-        }
+    
         getAllCards();
     }, [])
 
@@ -56,7 +47,7 @@ const CarouselCards = ({ name }) => {
         <div className='carouselCards my-20 max-w-screen-xl mx-auto w-10/12 md:w-full'>
             <div className="header">
                 <div className="flex">
-                    <h1 className='text-3xl'>{name === 'Blog' && 'ब्लॉग'} {name === 'Competitions' && 'प्रतियोगिताएं'} {name === 'Upcoming Competitions' && 'आगामी प्रतियोगिताएं'}</h1>
+                    <h1 className='text-3xl'>{name === 'Blog' && 'ब्लॉग'} {name === 'Competitions' && 'प्रतियोगिताएं'} {name === 'Upcoming-Competitions' && 'आगामी प्रतियोगिताएं'}</h1>
                 </div>
                 <div className="flex gap-2">
                     <div className="arrow__left border-2 border-gray-500 border-solid hover:text-gray-100 hover:bg-navy hover:border-navy  border-black p-1 rounded-full" onClick={() => slider?.current?.slickPrev()}>
@@ -69,7 +60,7 @@ const CarouselCards = ({ name }) => {
             </div>
             <div className='max-w-screen-xl mx-auto'>
                 <Slider ref={slider} {...settings} className="flex justify-center">
-                    {data.map((item,index) => (
+                    {data.map((item, index) => (
                         <div key={index} className=''>
                             <div class="max-w-sm overflow-hidden rounded-lg bg-white hover:shadow-2xl">
                                 <img
