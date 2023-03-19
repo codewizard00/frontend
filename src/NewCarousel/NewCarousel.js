@@ -7,7 +7,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import axios from 'axios';
 const CarouselCards = ({ name }) => {
 
-    
+
     const [data, setData] = useState([]);
     const getAllCards = () => {
         var config = {
@@ -25,13 +25,13 @@ const CarouselCards = ({ name }) => {
     }
 
     useEffect(() => {
-    
         getAllCards();
     }, [])
 
     var settings = {
+        className:"justify-start flex",
         dots: false,
-        // infinite: true,
+        infinite: name !== "Upcoming-Competitions",
         speed: 700,
         // slidesToShow: 3,
         slidesToScroll: 1,
@@ -59,39 +59,31 @@ const CarouselCards = ({ name }) => {
                 </div>
             </div>
             <div className='max-w-screen-xl mx-auto'>
-                <Slider ref={slider} {...settings} className="flex justify-center">
+                <Slider ref={slider} centerMode={false} className={"justify-start flex"} {...settings} >
                     {data.map((item, index) => (
-                        <div key={index} className=''>
-                            <div class="max-w-sm overflow-hidden rounded-lg bg-white hover:shadow-2xl">
+                      
+                            <div class="max-w-sm overflow-hidden container flex flex-wrap justify-center rounded-lg bg-white hover:shadow-2xl">
                                 <img
                                     src={item.image_url}
                                     class="aspect-video w-full object-cover"
                                     alt=""
                                 />
                                 <div class="p-4">
-                                    <p class="mb-1 text-sm text-primary-500">Andrea Felsted • <time>18 Nov 2022</time></p>
-                                    <h3 class="text-xl font-medium text-gray-900">Migrating to Sailboat UI</h3>
-                                    <p class="mt-1 text-gray-500">Sailboat UI helps streamline software projects, sprints, tasks, and bug tracking.</p>
+                                    <h3 class="text-xl font-medium text-gray-900">{item.title} <place> •{item.place}</place> • <time>{item.timings}</time></h3>
+                                    <p class="mt-1 text-gray-500">{item.about}</p>
                                     <div class="mt-4 flex gap-2">
-                                        <span
-                                            class="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2 py-1 text-xs font-semibold text-blue-600"
-                                        >
-                                            Design
-                                        </span>
-                                        <span
-                                            class="inline-flex items-center gap-1 rounded-full bg-indigo-50 px-2 py-1 text-xs font-semibold text-indigo-600"
-                                        >
-                                            Product
-                                        </span>
-                                        <span
-                                            class="inline-flex items-center gap-1 rounded-full bg-orange-50 px-2 py-1 text-xs font-semibold text-orange-600"
-                                        >
-                                            Develop
-                                        </span>
+                                        {item.keyword.split(',').map((items, index) => (
+                                            <span
+                                                key={index}
+                                                class="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2 py-1 text-xs font-semibold text-blue-600"
+                                            >
+                                                {items}
+                                            </span>
+                                        ))}
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                     
                     ))}
                 </Slider>
             </div>

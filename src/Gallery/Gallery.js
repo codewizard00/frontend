@@ -28,7 +28,7 @@ const Gallery = () => {
     const getAllBanner = () => {
         var config = {
             method: 'get',
-            url: `${process.env.REACT_APP_PROD_URL}get/AllBanner/Home-Carousel`,
+            url: `${process.env.REACT_APP_PROD_URL}get/AllBanner/Gallery-Carousel`,
             headers: {}
         };
 
