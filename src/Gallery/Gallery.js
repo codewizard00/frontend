@@ -7,8 +7,8 @@ import Newsletter from "../Newsletter/Newsletter";
 
 const Gallery = () => {
 
-    const [data, setData] = useState([]);
-    const getAllBanner = () => {
+    const [data1, setData1] = useState([]);
+    const getAllBanner1 = () => {
         var config = {
             method: 'get',
             url: `${process.env.REACT_APP_PROD_URL}get/AllBanner/Event-Gallery`,
@@ -24,14 +24,34 @@ const Gallery = () => {
             });
     }
 
+    const [data, setData] = useState([]);
+    const getAllBanner = () => {
+        var config = {
+            method: 'get',
+            url: `${process.env.REACT_APP_PROD_URL}get/AllBanner/Home-Carousel`,
+            headers: {}
+        };
+
+        axios(config)
+            .then(function (response) {
+                setData(response.data.message);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
     useEffect(() => {
+        getAllBanner1();
         getAllBanner();
     }, [])
+
+  
 
     return (
         <>
             <NavBar />
-            <HomeCarousel />
+            <HomeCarousel  data={data1}/>
             <div className="flex justify-between max-w-screen-xl mx-auto items-center">
 
                 <h1 className="text-5xl my-10 font-[hind] text-navy font-bold text-center" >

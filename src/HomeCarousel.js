@@ -9,28 +9,8 @@ import "swiper/css/pagination";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const HomeCarousel = () => {
-    const [data, setData] = useState([]);
-    const getAllBanner = () => {
-        var config = {
-            method: 'get',
-            url: `${process.env.REACT_APP_PROD_URL}get/AllBanner`,
-            headers: {}
-        };
-
-        axios(config)
-            .then(function (response) {
-                setData(response.data.message);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-    }
-
-    useEffect(() => {
-        getAllBanner();
-    }, [])
-
+const HomeCarousel = ({data}) => {
+    
     return (
         <>
 

@@ -1,3 +1,5 @@
+import axios from "axios"
+import { useEffect, useState } from "react"
 import BookCarousel from "../BooksShow/BookCarousel"
 import BookShow from "../BooksShow/BookeShow"
 import ImageCarousel from "../Carousel/Carousel"
@@ -11,18 +13,39 @@ import Newsletter from "../Newsletter/Newsletter"
 import Writer from "../Writer/Writer"
 
 const Home = () => {
+    const [data, setData] = useState([]);
+    const getAllBanner = () => {
+        var config = {
+            method: 'get',
+            url: `${process.env.REACT_APP_PROD_URL}get/AllBanner/Home-Carousel`,
+            headers: {}
+        };
+
+        axios(config)
+            .then(function (response) {
+                setData(response.data.message);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+    useEffect(() => {
+        getAllBanner();
+    }, [])
+
     return (
         <>
             <NavBar />
-            <HomeCarousel />
+            <HomeCarousel data={data}/>
             <BookCarousel />
             <BookShow />
             <EventGallery />
             <Writer />
-            <CarouselCards name={"Blog"}/>
+            <CarouselCards name={"Blog"} />
             <HeroSection left={true} />
-            <CarouselCards name={"Competitions"}/>
-            <CarouselCards name={"Upcoming-Competitions"}/>
+            <CarouselCards name={"Competitions"} />
+            <CarouselCards name={"Upcoming-Competitions"} />
             <section class="py-10 bg-gray-100 sm:py-16 lg:py-24">
                 <div class="max-w-5xl px-4 mx-auto sm:px-6 lg:px-8">
                     <div class="max-w-2xl mx-auto text-center">
