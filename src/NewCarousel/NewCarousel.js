@@ -62,7 +62,7 @@ const CarouselCards = ({ name }) => {
                 <Slider ref={slider} centerMode={false} className={"justify-start flex"} {...settings} >
                     {data.map((item, index) => (
                       <div className='flex'>
-                            <div class="max-w-[400px] overflow-hidden container flex flex-wrap justify-center rounded-lg bg-white hover:shadow-2xl">
+                            <div class="max-w-[399px] overflow-hidden container flex flex-wrap justify-center rounded-lg bg-white hover:shadow-2xl">
                                 <img
                                     src={item.image_url}
                                     class="aspect-video w-full object-cover"
