@@ -52,25 +52,23 @@ const BookCarousel = () => {
                 <Slider ref={slider} {...settings} centerMode={false}>
                     {data.map((item, index) => (
                         <Link to={`/pdfReader/${item.id}`} target="_blank">
-                        <div class="" key={index}>
+                        <div class="hover:shadow-2xl" key={index}>
                             <div
                                 class="flex flex-col rounded-lg bg-white shadow-lg dark:bg-neutral-700 md:max-w-xl md:flex-row">
                                 <img
                                     class="h-96 w-full rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
-                                    src="https://mdbootstrap.com/wp-content/uploads/2020/06/vertical.jpg"
+                                    src={item.image}
                                     alt="" />
-                                <div class="flex flex-col justify-start p-6">
+                                <div class="flex flex-col bg-gray-100  justify-start p-6">
                                     <h5
                                         class="mb-2 text-xl font-medium text-neutral-800 dark:text-neutral-50">
-                                        Card title
+                                        {item.title}
                                     </h5>
                                     <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
-                                        This is a wider card with supporting text below as a natural
-                                        lead-in to additional content. This content is a little bit
-                                        longer.
+                                        {item.about}
                                     </p>
                                     <p class="text-xs text-neutral-500 dark:text-neutral-300">
-                                        Last updated 3 mins ago
+                                        
                                     </p>
                                 </div>
                             </div>

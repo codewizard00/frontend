@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { Link } from 'react-router-dom';
 
 const BookShow = () => {
 
@@ -69,7 +70,7 @@ const BookShow = () => {
                 <div className='max-w-screen-xl mx-auto'>
                     <Slider ref={slider} {...settings} centerMode={false}>
                         {data && data.map((item, index) => (
-                            <a href={item.url} target="_blank">
+                            <Link to={`bookpage/${item.id}`}>
                             <div class="container flex flex-wrap justify-center md:gap-20">
                                 <div class="mobile-layout">
                                     <div class="book-cover">
@@ -94,7 +95,7 @@ const BookShow = () => {
                                     </div>
                                 </div>
                             </div>
-                            </a>
+                            </Link>
                         ))}
                     </Slider>
                 </div>

@@ -61,8 +61,8 @@ const CarouselCards = ({ name }) => {
             <div className='max-w-screen-xl mx-auto'>
                 <Slider ref={slider} centerMode={false} className={"justify-start flex"} {...settings} >
                     {data.map((item, index) => (
-                      
-                            <div class="max-w-sm overflow-hidden container flex flex-wrap justify-center rounded-lg bg-white hover:shadow-2xl">
+                      <div className='flex'>
+                            <div class="max-w-[400px] overflow-hidden container flex flex-wrap justify-center rounded-lg bg-white hover:shadow-2xl">
                                 <img
                                     src={item.image_url}
                                     class="aspect-video w-full object-cover"
@@ -83,7 +83,7 @@ const CarouselCards = ({ name }) => {
                                     </div>
                                 </div>
                             </div>
-                     
+                            </div>
                     ))}
                 </Slider>
             </div>

@@ -34,7 +34,7 @@ const Gallery = () => {
 
         axios(config)
             .then(function (response) {
-                setData(response.data.message);
+                setData1(response.data.message);
             })
             .catch(function (error) {
                 console.log(error);
@@ -62,7 +62,7 @@ const Gallery = () => {
                 {data.map((data,index) => (
                     <div key={index} className="relative group">
                         <img class="h-auto max-w-sm transition-all duration-1000 blur-none rounded-lg group-hover:blur-sm " src={data.image_url} alt="image description" />
-                        <div class="group-hover:text-4xl text-[0px] transition-all duration-1000 absolute z-10 translate-x-[-50%] left-[50%] flex justify-center items-center  text-gray-100 bottom-[10%] font-semibold">Dwayne</div>
+                        <div class="group-hover:text-4xl text-[0px] transition-all duration-1000 absolute z-10 translate-x-[-50%] left-[50%] flex justify-center items-center  text-gray-100 bottom-[10%] font-semibold">{data.image_alt}</div>
                     </div>
                 ))}
               

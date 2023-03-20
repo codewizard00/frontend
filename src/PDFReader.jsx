@@ -11,6 +11,9 @@ const PDFReader = () => {
   const [page, setPage] = useState(1);
   const [pages, setPages] = useState(null);
 
+
+  
+
   const renderPagination = (page, pages) => {
     if (!pages) {
       return null;
