@@ -6,13 +6,85 @@ import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import Faq from 'react-faq-component';
+
 
 const UserProfile = () => {
     const [value, setValue] = React.useState('1');
-
+    const { id } = useParams();
+    const [poemData, setPoemData] = React.useState([]);
+    const [bookData, setBookData] = React.useState([]);
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
+
+    const [data, setData] = React.useState([]);
+
+   
+
+    React.useEffect(() => {
+        var config = {
+            method: 'get',
+            url: `${process.env.REACT_APP_PROD_URL}get/AllWriter`,
+            headers: {}
+        };
+        axios(config)
+            .then(function (response) {
+                setData(response.data.message);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        var config = {
+            method: 'get',
+            url: `${process.env.REACT_APP_PROD_URL}get/writercontent/${id}/poems`,
+            headers: {}
+        };
+        axios(config)
+            .then(function (response) {
+                setPoemData(response.data.message);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        var config = {
+            method: 'get',
+            url: `${process.env.REACT_APP_PROD_URL}get/writercontent/${id}/books`,
+            headers: {}
+        };
+        axios(config)
+            .then(function (response) {
+                setBookData(response.data.message);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }, [])
+
+
+    const data1 = {
+      
+        rows: [
+            {
+                title: "Lorem ipsum dolor sit amet,",
+                content: "Lorem ipsum dolor sit amet, consectetur "
+            },
+            {
+                title: "Nunc maximus, magna at ultricies elementum",
+                content: "Nunc maximus, magna at ultricies elementum, risus turpis vulputate quam."
+            },
+            {
+                title: "Curabitur laoreet, mauris vel blandit fringilla",
+                content: "Curabitur laoreet, mauris vel blandit fringilla, leo elit rhoncus nunc"
+            },
+            {
+                title: "What is the package version",
+                content: "v1.0.5"
+            }]
+    }
+
     return (
         <>
             <NavBar />
@@ -24,20 +96,20 @@ const UserProfile = () => {
                             <div class="flex flex-wrap justify-center">
                                 <div class="w-full px-4 flex justify-center">
                                     <div class="relative">
-                                        <img alt="..." src="https://res.cloudinary.com/valarmorghullis/image/upload/v1674909476/Premsudha/team1_pl9pqr.jpg" class="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-[150px]" />
+                                        <img alt="..." src={data.image} class="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-[150px]" />
                                     </div>
                                 </div>
                                 <div class="text-center mt-28">
                                     <h3 class="text-xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
-                                        सुमत कुमार जैन
+                                        {data.name}
                                     </h3>
                                     <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">
                                         <i class="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>
-                                        नई दिल्ली, भारत
+                                        {data.place}
                                     </div>
                                     <div class="mb-2 text-blueGray-600 mt-2">
                                         <i class="fas fa-briefcase mr-2 text-lg text-blueGray-400"></i>
-                                        संरक्षक
+
                                     </div>
 
                                 </div>
@@ -51,8 +123,8 @@ const UserProfile = () => {
                                                     <Tab label="प्रतियोगिता" value="3" />
                                                 </TabList>
                                             </Box>
-                                            <TabPanel value="1">Item One</TabPanel>
-                                            <TabPanel value="2">Item Two</TabPanel>
+                                            <TabPanel value="1"><Faq data={data1}/></TabPanel>
+                                            <TabPanel value="2"><Faq data={data1}/></TabPanel>
                                             <TabPanel value="3">Item Three</TabPanel>
                                         </TabContext>
                                     </Box>

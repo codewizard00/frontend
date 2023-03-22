@@ -29,14 +29,14 @@ const Team = () => {
             <NavBar />
 
             <div class="w-full bg-gray-100 dark:bg-gray-800 px-10 py-10">
-                <div class="container flex justify-center mx-auto pt-16">
+                <div class="container flex justify-center mx-auto pt-10">
                     <div>
                         <h1 class="xl:text-4xl text-3xl font-[Hind] text-center text-gray-800 dark:text-white font-extrabold pb-6 sm:w-4/6 w-5/6 mx-auto">
                             संगठन के परदे के पीछे प्रतिभाशाली लोग</h1>
                     </div>
                 </div>
                 <div class="container max-w-screen-xl mx-auto">
-                    <div role="list" aria-label="Behind the scenes People " class="lg:flex md:flex sm:flex items-center xl:justify-between flex-wrap md:justify-around sm:justify-around lg:justify-around">
+                    <div role="list" aria-label="Behind the scenes People " class="lg:flex md:flex sm:flex items-center xl:justify-between flex-wrap md:justify-around sm:justify-around lg:justify-around gap-4">
                         {data.map((value, index) => (
                             <div key={index} role="listitem" class="xl:w-1/4 sm:w-3/4 md:w-2/5 relative mt-16 mb-32 sm:mb-24 xl:max-w-sm lg:w-2/5">
                                 <div class="rounded overflow-hidden shadow-md bg-white dark:bg-gray-900">

@@ -49,10 +49,11 @@ const BlogPages = () => {
                                 <p class="font-semibold text-gray-200 text-sm">{data.about} </p>
                                 <p class="font-semibold text-gray-400 text-xs"> {data.timings} </p>
                             </div>
-                            <div className="gap-1 flex">
-                            <Chip color="success" label="Chip Filled" />
-                            <Chip color="success" label="Chip Filled" />
-                            <Chip color="success" label="Chip Filled" />
+                            <div className="gap-1 my-2 flex">
+                                {data?.keyword?.split(",")?.map((data1, index) => (
+                                    <Chip color="success" label={data1} />
+                                ))}
+
                             </div>
                         </div>
                     </div>
@@ -63,7 +64,7 @@ const BlogPages = () => {
 
                 </div>
             </main>
-            <Newsletter/>
+            <Newsletter />
             <Footer />
         </>
     )

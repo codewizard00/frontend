@@ -1,35 +1,68 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import NavBar from "../Home/Component/Header";
 
 const BookPage = () => {
+    const { id } = useParams();
+    const [data, setData] = useState("");
+    const [related, setRelated] = useState([]);
+    useEffect(() => {
+        var config = {
+            method: 'get',
+            url: `${process.env.REACT_APP_PROD_URL}get/books/${id}`,
+            headers: {}
+        };
+        axios(config)
+            .then(function (response) {
+                setData(response.data.message);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        var config = {
+            method: 'get',
+            url: `${process.env.REACT_APP_PROD_URL}get/AllBook/book`,
+            headers: {}
+        };
+        axios(config)
+            .then(function (response) {
+                setRelated(response.data.message);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }, [])
+
+    console.log(related);
+    console.log(data);
+
     return (
         <>
             <NavBar />
             <div class="antialiased">
-
-
                 <div class="bg-navy text-gray-200 md:text-center py-2 px-4">
                     Only few Pieces left
                 </div>
-
-
-
                 <div class="py-6">
                     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div class="flex items-center space-x-2 text-gray-400 text-sm">
-                            <a href="#" class="hover:underline hover:text-gray-600">Home</a>
+                            <a href="#" class="hover:underline hover:text-gray-600">होम</a>
                             <span>
                                 <svg class="h-5 w-5 leading-none text-gray-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                                 </svg>
                             </span>
-                            <a href="#" class="hover:underline hover:text-gray-600">Books</a>
+                            <a href="#" class="hover:underline hover:text-gray-600">पुस्तकें</a>
                             <span>
                                 <svg class="h-5 w-5 leading-none text-gray-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                                 </svg>
                             </span>
-                            <span>Book Name</span>
+                            <span>
+                                {data.title}
+                            </span>
                         </div>
                     </div>
                     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
@@ -38,25 +71,22 @@ const BookPage = () => {
                                 <div x-data="{ image: 1 }" x-cloak>
                                     <div class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4">
                                         <div x-show="image === 1" class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
-                                            <span class="text-5xl">1</span>
+                                            <span class="text-5xl">
+                                                <img className="h-64 lg:h-72" src={data.image} alt={data.image_alt} />
+                                            </span>
                                         </div>
-                                    </div>
-
-                                    <div class="flex -mx-2 mb-4">
-
-
                                     </div>
                                 </div>
                             </div>
                             <div class="md:flex-1 px-4">
-                                <h2 class="mb-2 leading-tight tracking-tight font-bold text-gray-800 text-2xl md:text-3xl">Lorem ipsum dolor, sit amet consectetur, adipisicing elit.</h2>
-                                <p class="text-gray-500 text-sm">By <a href="#" class="text-indigo-600 hover:underline">ABC Company</a></p>
+                                <h2 class="mb-2 leading-tight tracking-tight font-bold text-gray-800 text-2xl md:text-3xl">{data.title}</h2>
+                                <p class="text-gray-500 text-sm"> द्वारा <a href="#" class="text-indigo-600 hover:underline">Premsudha</a></p>
 
                                 <div class="flex items-center space-x-4 my-4">
                                     <div>
                                         <div class="rounded-lg bg-gray-100 flex py-2 px-3">
-                                            <span class="text-indigo-400 mr-1 mt-1">$</span>
-                                            <span class="font-bold text-indigo-600 text-3xl">25</span>
+                                            {/* <span class="text-indigo-400 mr-1 mt-1">$</span> */}
+                                            <span class="font-bold text-indigo-600 text-3xl">{data.price}</span>
                                         </div>
                                     </div>
                                     <div class="flex-1">
@@ -65,7 +95,7 @@ const BookPage = () => {
                                     </div>
                                 </div>
 
-                                <p class="text-gray-500">Lorem ipsum, dolor sit, amet consectetur adipisicing elit. Vitae exercitationem porro saepe ea harum corrupti vero id laudantium enim, libero blanditiis expedita cupiditate a est.</p>
+                                <p class="text-gray-500">{data.about}</p>
 
                                 <div class="flex py-4 space-x-4">
                                     <div class="relative">
@@ -101,28 +131,29 @@ const BookPage = () => {
                 </div>
             </div >
             <div class="bg-white">
+
                 <div class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+
                     <h2 class="text-2xl font-bold tracking-tight text-gray-900">More Products</h2>
-
                     <div class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-                        <div class="group relative">
-                            <div class="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80">
-                                <img src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg" alt="Front of men&#039;s Basic Tee in black." class="h-full w-full object-cover object-center lg:h-full lg:w-full" />
-                            </div>
-                            <div class="mt-4 flex justify-between">
-                                <div>
-                                    <h3 class="text-sm text-gray-700">
-                                        <a href="#">
-                                            <span aria-hidden="true" class="absolute inset-0"></span>
-                                            Basic Tee
-                                        </a>
-                                    </h3>
-                                    <p class="mt-1 text-sm text-gray-500">Black</p>
+                        {related.map((data, index) => (
+                            <>
+                                <div class="group relative">
+                                    <img src={data.image} alt="Front of men&#039;s Basic Tee in black." class="object-cover object-center aspect-w-1 aspect-h-1 md:h-60 h-44" />
+                                    <div class="mt-4 flex justify-between">
+                                        <div>
+                                            <h3 class="text-sm text-gray-700">
+                                                <a href="#">
+                                                    <span aria-hidden="true" class="absolute inset-0"></span>
+                                                    {data.title}
+                                                </a>
+                                            </h3>
+                                        </div>
+                                        <p class="text-sm font-medium text-gray-900">{data.price}</p>
+                                    </div>
                                 </div>
-                                <p class="text-sm font-medium text-gray-900">$35</p>
-                            </div>
-                        </div>
-
+                            </>
+                        ))}
                     </div>
                 </div>
             </div>

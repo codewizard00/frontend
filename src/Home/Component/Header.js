@@ -59,13 +59,13 @@ const NavBar = () => {
                 संपादन मंडल
               </Link>
               <Link
-                to="/userprofile"
+                to="/writer"
                 className="text-xl font-semibold text-navy"
               >
                 लेखक
               </Link>
               <Link
-                to="/"
+                to="/about"
                 className="text-xl font-semibold text-navy"
               >
                 हमारे बारे में
@@ -239,7 +239,7 @@ const NavBar = () => {
                       </span>
                     </Link>
                     <Link
-                      to="/userprofile"
+                      to="/writer"
                       className="-m-3 p-3 flex items-center rounded-md hover:border-b-4 hover:border-navy"
                     >
                       {/* Heroicon name: outline/cursor-click */}
@@ -287,7 +287,7 @@ const NavBar = () => {
                       </span>
                     </Link>
                     <Link
-                      to="/"
+                      to="/about"
                       className="-m-3 p-3 flex items-center rounded-md hover:border-b-4 hover:border-navy"
                     >
                       {/* Heroicon name: outline/view-grid */}

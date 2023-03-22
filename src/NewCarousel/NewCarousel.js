@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 const CarouselCards = ({ name }) => {
 
 
@@ -29,7 +30,7 @@ const CarouselCards = ({ name }) => {
     }, [])
 
     var settings = {
-        className:"justify-start flex",
+        className: "justify-start flex",
         dots: false,
         infinite: name !== "Upcoming-Competitions",
         speed: 700,
@@ -61,29 +62,31 @@ const CarouselCards = ({ name }) => {
             <div className='max-w-screen-xl mx-auto'>
                 <Slider ref={slider} centerMode={false} className={"justify-start flex"} {...settings} >
                     {data.map((item, index) => (
-                      <div className='flex'>
-                            <div class="max-w-[399px] overflow-hidden container flex flex-wrap justify-center rounded-lg bg-white hover:shadow-2xl">
-                                <img
-                                    src={item.image_url}
-                                    class="aspect-video w-full object-cover"
-                                    alt=""
-                                />
-                                <div class="p-4">
-                                    <h3 class="text-xl font-medium text-gray-900">{item.title} <place> •{item.place}</place> • <time>{item.timings}</time></h3>
-                                    <p class="mt-1 text-gray-500">{item.about}</p>
-                                    <div class="mt-4 flex gap-2">
-                                        {item.keyword.split(',').map((items, index) => (
-                                            <span
-                                                key={index}
-                                                class="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2 py-1 text-xs font-semibold text-blue-600"
-                                            >
-                                                {items}
-                                            </span>
-                                        ))}
+                        <Link to={`/events/${item.id}`}>
+                            <div className='flex'>
+                                <div class="max-w-[399px] overflow-hidden container flex flex-wrap justify-center rounded-lg bg-white hover:shadow-2xl">
+                                    <img
+                                        src={item.image_url}
+                                        class="aspect-video w-full object-cover"
+                                        alt=""
+                                    />
+                                    <div class="p-4">
+                                        <h3 class="text-xl font-medium text-gray-900">{item.title} <place> •{item.place}</place> • <time>{item.timings}</time></h3>
+                                        <p class="mt-1 text-gray-500">{item.about}</p>
+                                        <div class="mt-4 flex gap-2">
+                                            {item.keyword.split(',').map((items, index) => (
+                                                <span
+                                                    key={index}
+                                                    class="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2 py-1 text-xs font-semibold text-blue-600"
+                                                >
+                                                    {items}
+                                                </span>
+                                            ))}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            </div>
+                        </Link>
                     ))}
                 </Slider>
             </div>

@@ -85,7 +85,7 @@ const BookShow = () => {
                                                     <i class="fas fa-chevron-down"></i>
                                                 </div>
                                             </div>
-                                            <div class="author">by {item.writer}</div>
+                                            <div class="author">द्वारा {item.writer}</div>
                                             <div class="body">
                                               <p>
                                                 {item.about}
