@@ -35,8 +35,7 @@ const BookPage = () => {
             });
     }, [])
 
-    console.log(related);
-    console.log(data);
+   
 
     return (
         <>

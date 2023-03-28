@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import NavBar from "../Home/Component/Header";
 import axios from "axios";
@@ -34,6 +34,9 @@ const BlogPages = () => {
     return (
         <>
             <NavBar />
+            <div class="bg-navy text-gray-200 md:text-center py-2 px-4">
+                <Link to={`/competition/${data.id}`}>  परिणाम घोषित हो गए हैं चेक करने के लिए यहां क्लिक करें</Link>
+            </div>
             <main class="mt-10">
                 <div class="mb-4 md:mb-0 w-full max-w-screen-xl mx-auto relative" style={{ height: "24em" }}>
                     <div class="absolute left-0 bottom-0 w-full h-full z-10"

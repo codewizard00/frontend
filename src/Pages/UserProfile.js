@@ -22,12 +22,12 @@ const UserProfile = () => {
 
     const [data, setData] = React.useState([]);
 
-   
+
 
     React.useEffect(() => {
         var config = {
             method: 'get',
-            url: `${process.env.REACT_APP_PROD_URL}get/AllWriter`,
+            url: `${process.env.REACT_APP_PROD_URL}get/writer/${id}`,
             headers: {}
         };
         axios(config)
@@ -39,7 +39,7 @@ const UserProfile = () => {
             });
         var config = {
             method: 'get',
-            url: `${process.env.REACT_APP_PROD_URL}get/writercontent/${id}/poems`,
+            url: `${process.env.REACT_APP_PROD_URL}get/writercontent/${id}/Poems`,
             headers: {}
         };
         axios(config)
@@ -51,7 +51,7 @@ const UserProfile = () => {
             });
         var config = {
             method: 'get',
-            url: `${process.env.REACT_APP_PROD_URL}get/writercontent/${id}/books`,
+            url: `${process.env.REACT_APP_PROD_URL}get/writercontent/${id}/Book`,
             headers: {}
         };
         axios(config)
@@ -65,24 +65,11 @@ const UserProfile = () => {
 
 
     const data1 = {
-      
-        rows: [
-            {
-                title: "Lorem ipsum dolor sit amet,",
-                content: "Lorem ipsum dolor sit amet, consectetur "
-            },
-            {
-                title: "Nunc maximus, magna at ultricies elementum",
-                content: "Nunc maximus, magna at ultricies elementum, risus turpis vulputate quam."
-            },
-            {
-                title: "Curabitur laoreet, mauris vel blandit fringilla",
-                content: "Curabitur laoreet, mauris vel blandit fringilla, leo elit rhoncus nunc"
-            },
-            {
-                title: "What is the package version",
-                content: "v1.0.5"
-            }]
+        rows: poemData
+    }
+
+    const data2 = {
+        rows: bookData
     }
 
     return (
@@ -96,7 +83,7 @@ const UserProfile = () => {
                             <div class="flex flex-wrap justify-center">
                                 <div class="w-full px-4 flex justify-center">
                                     <div class="relative">
-                                        <img alt="..." src={data.image} class="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-[150px]" />
+                                        <img alt="..." src={data.image} class="shadow-xl rounded-full h-auto align-middle w-32 border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-[150px]" />
                                     </div>
                                 </div>
                                 <div class="text-center mt-28">
@@ -120,12 +107,12 @@ const UserProfile = () => {
                                                 <TabList onChange={handleChange} aria-label="lab API tabs example" centered>
                                                     <Tab label="कविता" value="1" />
                                                     <Tab label="पुस्तकें" value="2" />
-                                                    <Tab label="प्रतियोगिता" value="3" />
+                                                    {/* <Tab label="प्रतियोगिता" value="3" /> */}
                                                 </TabList>
                                             </Box>
-                                            <TabPanel value="1"><Faq data={data1}/></TabPanel>
-                                            <TabPanel value="2"><Faq data={data1}/></TabPanel>
-                                            <TabPanel value="3">Item Three</TabPanel>
+                                            <TabPanel value="1"><Faq data={data1} /></TabPanel>
+                                            <TabPanel value="2"><Faq data={data2} /></TabPanel>
+                                            {/* <TabPanel value="3">Item Three</TabPanel> */}
                                         </TabContext>
                                     </Box>
                                 </div>

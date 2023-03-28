@@ -41,7 +41,7 @@ export default function App() {
           <Route path="/events/:id" element={<BlogPages />} />
           <Route path="/events" element={<BlogIndex />} />
           <Route path="/bookPage/:id" element={<BookPage />} />
-          <Route path="/competition" element={<Competition />} />
+          <Route path="/competition/:id" element={<Competition />} />
           <Route path="/about" element={<AboutUs />} />
 
         </Routes>
