@@ -4,7 +4,6 @@ import Footer from "../Footer/Footer";
 import NavBar from "../Home/Component/Header";
 import axios from "axios";
 import { Chip } from "@mui/material";
-import Newsletter from "../Newsletter/Newsletter";
 
 
 const BlogPages = () => {
@@ -33,20 +32,21 @@ const BlogPages = () => {
     return (
         <>
             <NavBar />
-            <div class="bg-navy text-gray-200 md:text-center py-2 px-4">
-                <Link to={`/competition/${data.id}`}>  परिणाम घोषित हो गए हैं चेक करने के लिए यहां क्लिक करें</Link>
-            </div>
-            <main class="mt-10">
-               <div class="mb-4 md:mb-0 w-full max-w-screen-xl mx-auto " style={{ height: "24em" }}>
+            <Link to={`/competition/${data.id}`}>
+                <div class="bg-navy text-gray-200 flex items-center z-50 md:text-center h-10">
+                    परिणाम घोषित हो गए हैं चेक करने के लिए यहां क्लिक करें
+                </div>
+            </Link>
+            <main class="mt-4">
+                <div class="mb-4 md:mb-0 w-full max-w-screen-xl mx-auto relative" style={{ height: "24em" }}>
                     <div class="absolute left-0 bottom-0 w-full h-full z-10"
                         style={{ backgroundImage: "linear-gradient(180deg  transparent,rgba(0,0,0,.7))" }}></div>
-                        <div className="flex justify-center">
-                    <img src={`${data.image_url}`} class=" hidden md:flex margin-auto justify-center  object-cover aspect-auto " />
-                    <img src={`${data.image_mobile_url}`} class=" block md:hidden object-cover aspect-video" />
+                    <div className="flex justify-center">
+                        <img src={`${data.image_url}`} class=" hidden md:flex margin-auto justify-center  object-cover aspect-auto " />
+                        <img src={`${data.image_mobile_url}`} class=" block md:hidden object-cover aspect-video" />
                     </div>
-                  
-                    <div class="p-4 z-50">
 
+                    <div class="p-4 z-50">
                         <h2 class="text-4xl font-semibold text-gray-700 leading-tight">
                             {data.title}
                         </h2>
@@ -70,7 +70,7 @@ const BlogPages = () => {
 
                 </div>
             </main>
-            <Newsletter />
+            {/* <Newsletter /> */}
             <Footer />
         </>
     )
