@@ -26,16 +26,16 @@ const Register = () => {
     const googleSignIn = async () => {
         const provider = new GoogleAuthProvider()
         const data = await signInWithPopup(auth, provider)
-        console.log(data);
+        
     }
     const logout = async () => {
         const data = await signOut(auth);
-        console.log(data)
+       
     }
     const facebookSignIn = async () => {
         const provider = new FacebookAuthProvider()
         const data = await signInWithPopup(auth, provider)
-        console.log(data);
+        
     }
 
     const [value, setValue] = React.useState('1');

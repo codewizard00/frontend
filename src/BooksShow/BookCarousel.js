@@ -20,7 +20,7 @@ const BookCarousel = () => {
         axios(config)
             .then(function (response) {
                 setData(response.data.message);
-                console.log(response);
+
             })
             .catch(function (error) {
                 console.log(error);
@@ -54,13 +54,13 @@ const BookCarousel = () => {
                     <Slider ref={slider} {...settings} centerMode={false}>
                         {data.map((item, index) => (
                             <div class="container flex flex-wrap justify-center md:gap-20">
-                                
-                            <Link to={`/pdfReader/${item.id}`} target="_blank">  
-                                <img
-                                    class="w-[300px] p-2 rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
-                                    src={item.image}
-                                    alt="" />
-                            </Link>
+
+                                <Link to={`/pdfReader/${item.id}`} target="_blank">
+                                    <img
+                                        class="w-[300px] p-2 rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+                                        src={item.image}
+                                        alt="" />
+                                </Link>
                             </div>
                         ))}
                     </Slider>

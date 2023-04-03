@@ -35,7 +35,7 @@ const BookShow = () => {
         GetAllBook();
     }, [])
 
-    console.log(data);
+    
 
     var settings = {
         dots: false,
