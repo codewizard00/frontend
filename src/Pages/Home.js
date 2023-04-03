@@ -31,23 +31,19 @@ const Home = () => {
     }
 
     useEffect(() => {
-    
-        window.addEventListener('load', (event) => {
-            setLoader(false)
-        });
-        
+        setLoader(false)
     }, [])
 
     console.log(loader)
 
-    useEffect(()=>{
+    useEffect(() => {
         getAllBanner();
-    },[])
+    }, [])
 
     return (
         <>
             {loader ?
-                <div className="h-[100vh] flex bg-[#fafaff] justify-center items-center"> 
+                <div className="h-[100vh] flex bg-[#fafaff] justify-center items-center">
                     <img src="https://res.cloudinary.com/valarmorghullis/image/upload/v1680548687/WhatsApp_Image_2023-04-04_at_00.33.54_i2uo3n.jpg" />
                 </div>
                 :
