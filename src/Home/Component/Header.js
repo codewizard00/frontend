@@ -40,18 +40,6 @@ const NavBar = () => {
               >
                 कार्यक्रम
               </Link>
-              {/* <Link
-                to="/pdfReader"
-                className="text-xl font-semibold text-navy"
-              >
-                पत्रिका
-              </Link>
-              <Link
-                to="/pdfReader"
-                className="text-xl font-semibold text-navy"
-              >
-                ई पत्रिका
-              </Link> */}
               <Link
                 to="/team"
                 className="text-xl font-semibold text-navy"
@@ -78,14 +66,6 @@ const NavBar = () => {
               </Link>
 
             </nav>
-            {/* <form class="flex items-center hidden lg:flex items-center justify-end md:flex-1 lg:w-0">
-              <div class="relative w-full">
-                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                  <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
-                </div>
-                <input type="text" id="voice-search" class="bg-yellow-50 border border-gray-900 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="यहाँ खोजें" required />
-              </div>
-            </form> */}
             <div className="hidden lg:flex items-center justify-end md:flex-1 lg:w-0">
               {loggedIn &&
                 <>
@@ -139,7 +119,7 @@ const NavBar = () => {
                 </button>
               </div>
             </div>
-            <div className="-mr-2 -my-2 lg:hidden">
+            <div className="-my-2 lg:hidden">
               <button
                 type="button"
                 className="bg-cream rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-yellow-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
@@ -263,34 +243,9 @@ const NavBar = () => {
                       </span>
                     </Link>
                     <Link
-                      to="/pdfReader"
-                      className="-m-3 p-3 flex items-center rounded-md hover:border-b-4 hover:border-navy"
-                    >
-                      {/* Heroicon name: outline/shield-check */}
-                      <svg
-                        className="flex-shrink-0 h-6 w-6 text-navy"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        aria-hidden="true"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                        />
-                      </svg>
-                      <span className="ml-3 text-lg font-semibold text-gray-900">
-                        पत्रिका
-                      </span>
-                    </Link>
-                    <Link
                       to="/about"
                       className="-m-3 p-3 flex items-center rounded-md hover:border-b-4 hover:border-navy"
                     >
-                      {/* Heroicon name: outline/view-grid */}
                       <svg
                         className="flex-shrink-0 h-6 w-6 text-navy"
                         xmlns="http://www.w3.org/2000/svg"
@@ -335,7 +290,7 @@ const NavBar = () => {
                       </span>
                     </Link>
                     <Link
-                      to="/contact"
+                      to="/team"
                       className="-m-3 p-3 flex items-center rounded-md hover:border-b-4 hover:border-navy"
                     >
                       {/* Heroicon name: outline/chart-bar */}
@@ -358,30 +313,6 @@ const NavBar = () => {
                         संपादन मंडल
                       </span>
                     </Link>
-                    <Link
-                      to="/competition"
-                      className="-m-3 p-3 flex items-center rounded-md hover:border-b-4 hover:border-navy"
-                    >
-                      {/* Heroicon name: outline/chart-bar */}
-                      <svg
-                        className="flex-shrink-0 h-6 w-6 text-navy"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        aria-hidden="true"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                        />
-                      </svg>
-                      <span className="ml-3 text-lg font-semibold text-gray-900">
-                        प्रतियोगिता
-                      </span>
-                    </Link>
                     {!loggedIn &&
                       <>
                         <div className="flex gap-2 relative">
@@ -394,56 +325,6 @@ const NavBar = () => {
                 </div>
               </div>
               <div className="py-6 px-5 space-y-6">
-                {/* <div className="grid grid-cols-2 gap-y-4 gap-x-8">
-                <a
-                  href="#"
-                  className="text-base font-medium text-gray-900 hover:text-gray-700"
-                >
-                  Pricing
-                </a>
-                <a
-                  href="#"
-                  className="text-base font-medium text-gray-900 hover:text-gray-700"
-                >
-                  Docs
-                </a>
-                <a
-                  href="#"
-                  className="text-base font-medium text-gray-900 hover:text-gray-700"
-                >
-                  Enterprise
-                </a>
-                <a
-                  href="#"
-                  className="text-base font-medium text-gray-900 hover:text-gray-700"
-                >
-                  Blog
-                </a>
-                <a
-                  href="#"
-                  className="text-base font-medium text-gray-900 hover:text-gray-700"
-                >
-                  Help Center
-                </a>
-                <a
-                  href="#"
-                  className="text-base font-medium text-gray-900 hover:text-gray-700"
-                >
-                  Guides
-                </a>
-                <a
-                  href="#"
-                  className="text-base font-medium text-gray-900 hover:text-gray-700"
-                >
-                  Security
-                </a>
-                <a
-                  href="#"
-                  className="text-base font-medium text-gray-900 hover:text-gray-700"
-                >
-                  Events
-                </a>
-              </div> */}
                 <div>
                   {loggedIn &&
                     <>
@@ -470,7 +351,7 @@ const NavBar = () => {
 
                         className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-navy hover:bg-navy"
                       >
-                        <button onClick={() => { localStorage.clear() }}> Logout</button>
+                        <button onClick={() => { localStorage.clear() }}>लॉग आउट</button>
 
                       </Link>
                     </>

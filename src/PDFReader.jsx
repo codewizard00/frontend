@@ -1,4 +1,4 @@
-import React, { useEffect, useState,useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { usePdf } from "react-pdf-js";
 import "./styles.scss";
 import { useParams } from 'react-router-dom';
@@ -11,8 +11,15 @@ const PDFReader = () => {
   const [page, setPage] = useState(1);
   const [pages, setPages] = useState(null);
 
+  const pdf = ()=>{
 
-  
+  }
+
+  useEffect(()=>{
+    
+  },[])
+
+
 
   const renderPagination = (page, pages) => {
     if (!pages) {
@@ -53,7 +60,7 @@ const PDFReader = () => {
   };
 
   const canvasEl = useRef(null);
-  const url = "https://blog.mozilla.org/security/files/2015/05/HTTPS-FAQ.pdf";
+  const url = "http://res.cloudinary.com/valarmorghullis/image/upload/v1680502823/dsa_pdf.pdf";
 
   console.log("usePdf", usePdf);
   const [loading, numPages] = usePdf({
@@ -74,13 +81,14 @@ const PDFReader = () => {
 
   return (
     <div className="App">
-      <h1>Hello CodeSandbox</h1>
+      {/* <h1>Hello CodeSandbox</h1>
       <h2>Start editing to see some magic happen!</h2>
       <div>
         {loadingDIV}
         <canvas ref={canvasEl} />
         {renderPagination(page, pages)}
-      </div>
+      </div> */}
+      <iframe className='w-full h-[100vh]' src={url+"#toolbar=0"}/>
     </div>
   );
 };

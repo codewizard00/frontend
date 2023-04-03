@@ -44,19 +44,19 @@ const BookShow = () => {
         autoplaySpeed: 1000,
         speed: 1000,
         slidesToScroll: 1,
-        responsive: [{ breakpoint: 200, settings: { slidesToShow: 1 } }, { breakpoint: 768, settings: { slidesToShow: 1 } }, { breakpoint: 1024, settings: { slidesToShow: 2 } }, { breakpoint: 10000, settings: { slidesToShow: 3 } }],
-
+        responsive: [{ breakpoint: 200, settings: { slidesToShow: 2 } }, { breakpoint: 470, settings: { slidesToShow: 2 } }, { breakpoint: 768, settings: { slidesToShow: 4 } }, { breakpoint: 1024, settings: { slidesToShow: 5 } }, { breakpoint: 10000, settings: { slidesToShow: 6 } }],
+        centerMode: true
     };
 
     const slider = useRef(null);
 
     return (
         <div>
-            <div className='my-10 bg-gray-100'>
+            <div className='py-10 bg-gray-100'>
 
                 <div className="max-w-screen-xl flex justify-between mx-auto">
                     <div className="flex">
-                        <h1 className='text-3xl my-10'>पुस्तकें</h1>
+                        <h1 className='text-3xl my-4'>पुस्तकें</h1>
                     </div>
                     <div className="flex gap-2">
                         <div className="arrow__left border-2 border-gray-500 border-solid hover:text-gray-100 hover:bg-navy hover:border-navy  border-black h-10 w-10 mx-auto my-auto flex items-center justify-center rounded-full" onClick={() => slider?.current?.slickPrev()}>
@@ -70,32 +70,23 @@ const BookShow = () => {
                 <div className='max-w-screen-xl mx-auto'>
                     <Slider ref={slider} {...settings} centerMode={false}>
                         {data && data.map((item, index) => (
-                            <Link to={`bookpage/${item.id}`}>
                             <div class="container flex flex-wrap justify-center md:gap-20">
-                                <div class="mobile-layout">
-                                    <div class="book-cover">
-                                        <img class="book-top" src={`${item.image}`} alt="book-top" />
-                                        <img class="book-side" src="https://raw.githubusercontent.com/atomic-variable/images-repo/e37f432405904a280858e5437ce1960753bc78a3/book-side.svg" alt="book-side" />
-                                    </div>
-                                    <div class="preface">
-                                        <div class="content">
-                                            <div class="header">
-                                                <div class="title">{item.title}</div>
-                                                <div class="icon">
-                                                    <i class="fas fa-chevron-down"></i>
-                                                </div>
-                                            </div>
-                                            <div class="author">द्वारा {item.writer}</div>
-                                            <div class="body">
-                                              <p>
-                                                {item.about}
-                                              </p>
-                                            </div>
+                                <Link to={`bookpage/${item.id}`}>
+                                    <img
+                                        class="w-[300px] p-2 rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+                                        src={item.image}
+                                        alt="" />
+                                    <div className='flex justify-between px-6 w-full'>
+                                        <div>
+                                        <p >{item.title}</p>
+                                        <p >{item.price}</p>
+                                        </div>
+                                        <div className='mr-2'>
+                                            <button className='bg-navy text-white w-[60px] h-[30px] '>View</button>
                                         </div>
                                     </div>
-                                </div>
+                                </Link>
                             </div>
-                            </Link>
                         ))}
                     </Slider>
                 </div>

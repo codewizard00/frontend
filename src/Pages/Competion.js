@@ -6,11 +6,12 @@ import NavBar from '../Home/Component/Header';
 import Footer from '../Footer/Footer';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { Stack } from '@mui/material';
 const columns = [
-    { field: 'position', headerName: 'Postition', width: 200 },
+    { field: 'position', headerName: 'पद', width: 200 },
     {
         field: 'fullName',
-        headerName: 'Full name',
+        headerName: 'पूरा नाम',
         description: 'This column has a value getter and is not sortable.',
         sortable: false,
         width: 360,
@@ -24,7 +25,7 @@ const columns = [
     },
     {
         field: 'Certificates',
-        headerName: 'Certificates',
+        headerName: 'प्रमाण पत्र',
         description: 'This column has a value getter and is not sortable.',
         sortable: false,
         width: 260,
@@ -32,7 +33,7 @@ const columns = [
             return (
                 <div className="d-flex justify-content-between align-items-center" style={{ cursor: "pointer" }}>
                     <a target="_blank" href={params?.row?.certificate}>
-                    <DownloadForOfflineIcon />
+                        <DownloadForOfflineIcon />
                     </a>
                 </div>
             );
@@ -40,21 +41,11 @@ const columns = [
     },
 ];
 
-const rows = [
-    { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-    { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-    { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-    { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-    { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-    { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-    { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-    { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-    { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
-];
+
 
 export default function Competition() {
     const [data1, setData1] = React.useState([]);
-    const [data,setData] = React.useState("");
+    const [data, setData] = React.useState("");
     const { id } = useParams();
 
     const getData = () => {
@@ -68,7 +59,6 @@ export default function Competition() {
         axios(config)
             .then(function (response) {
                 setData1(response.data.message)
-                console.log(response,response.data.message)
             })
             .catch(function (error) {
                 console.log(error);
@@ -113,6 +103,18 @@ export default function Competition() {
                         checkboxSelection
                         disableSelectionOnClick
                         experimentalFeatures={{ newEditingApi: true }}
+                        components={{
+                            NoRowsOverlay: () => (
+                                <Stack height="100%" alignItems="center" justifyContent="center">
+                                    अभी कोई परिणाम घोषित नहीं हुआ है 
+                                </Stack>
+                            ),
+                            NoResultsOverlay: () => (
+                                <Stack height="100%" alignItems="center" justifyContent="center">
+                                    अभी कोई परिणाम घोषित नहीं हुआ है
+                                </Stack>
+                            )
+                        }}
                     />
                 </div>
 

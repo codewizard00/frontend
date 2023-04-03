@@ -42,7 +42,7 @@ const Footer = () => {
                                 </p>
                             </div>
                         </div>
-                        <div class="w-full px-4 sm:w-1/2 lg:w-2/12">
+                        <div class="w-1/2 px-4 sm:w-1/2 lg:w-2/12">
                             <div class="mb-10 w-full">
                                 <h4 class="text-dark mb-9 text-lg font-semibold">संसाधन</h4>
                                 <ul>
@@ -74,7 +74,7 @@ const Footer = () => {
                                 </ul>
                             </div>
                         </div>
-                        <div class="w-full px-4 sm:w-1/2 lg:w-2/12">
+                        <div class="w-1/2 px-4 sm:w-1/2 lg:w-2/12">
                             <div class="mb-10 w-full">
                                 <h4 class="text-dark mb-9 text-lg font-semibold">कंपनी</h4>
                                 <ul>
@@ -106,7 +106,7 @@ const Footer = () => {
                                 </ul>
                             </div>
                         </div>
-                        <div class="w-full px-4 sm:w-1/2 lg:w-2/12">
+                        <div class="w-1/2 px-4 sm:w-1/2 lg:w-2/12">
                             <div class="mb-10 w-full">
                                 <h4 class="text-dark mb-9 text-lg font-semibold">त्वरित सम्पक</h4>
                                 <ul>

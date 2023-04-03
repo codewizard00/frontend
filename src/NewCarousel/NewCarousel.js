@@ -66,14 +66,14 @@ const CarouselCards = ({ name }) => {
                             <div className='flex'>
                                 <div class="max-w-[399px] overflow-hidden container flex flex-wrap justify-center rounded-lg bg-white hover:shadow-2xl">
                                     <img
-                                        src={item.image_url}
+                                        src={item.image_mobile_url}
                                         class="aspect-video w-full object-cover"
                                         alt=""
                                     />
-                                    <div class="p-4">
+                                    <div className='px-4'>
                                         <h3 class="text-xl font-medium text-gray-900">{item.title} <place> •{item.place}</place> • <time>{item.timings}</time></h3>
-                                        <p class="mt-1 text-gray-500">{item.about}</p>
-                                        <div class="mt-4 flex gap-2">
+                                        <p class="mt-1  text-gray-500">{item.about}</p>
+                                        <div class="my-4  flex flex-wrap gap-2">
                                             {item.keyword.split(',').map((items, index) => (
                                                 <span
                                                     key={index}

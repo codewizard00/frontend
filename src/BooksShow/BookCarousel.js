@@ -20,6 +20,7 @@ const BookCarousel = () => {
         axios(config)
             .then(function (response) {
                 setData(response.data.message);
+                console.log(response);
             })
             .catch(function (error) {
                 console.log(error);
@@ -35,7 +36,7 @@ const BookCarousel = () => {
         autoplaySpeed: 1000,
         speed: 1000,
         slidesToScroll: 1,
-        responsive: [{ breakpoint: 200, settings: { slidesToShow: 2 } }, { breakpoint: 768, settings: { slidesToShow: 1 } }, { breakpoint: 1024, settings: { slidesToShow: 2 } }, { breakpoint: 10000, settings: { slidesToShow: 2 } }],
+        responsive: [{ breakpoint: 200, settings: { slidesToShow: 2 } }, { breakpoint: 470, settings: { slidesToShow: 2 } }, { breakpoint: 768, settings: { slidesToShow: 4 } }, { breakpoint: 1024, settings: { slidesToShow: 5 } }, { breakpoint: 10000, settings: { slidesToShow: 6 } }],
         centerMode: true
     };
 
@@ -47,35 +48,23 @@ const BookCarousel = () => {
 
     return (
         <>
-            <div className="my-20 max-w-screen-xl w-[80%] md:w-full mx-auto">
+            <div className="my-20 max-w-screen-xl w-[100%] md:w-full mx-auto">
                 <h1 className="text-center text-2xl pb-10 font-[Hind] font-bold md:text-4xl">ई-पुस्तकें</h1>
-                <Slider ref={slider} {...settings} centerMode={false}>
-                    {data.map((item, index) => (
-                        <Link to={`/pdfReader/${item.id}`} target="_blank">
-                        <div class="hover:shadow-2xl" key={index}>
-                            <div
-                                class="flex flex-col rounded-lg bg-white shadow-lg dark:bg-neutral-700 md:max-w-xl md:flex-row">
+                <div className="max-w-screen-xl mx-auto">
+                    <Slider ref={slider} {...settings} centerMode={false}>
+                        {data.map((item, index) => (
+                            <div class="container flex flex-wrap justify-center md:gap-20">
+                                
+                            <Link to={`/pdfReader/${item.id}`} target="_blank">  
                                 <img
-                                    class="h-96 w-full rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+                                    class="w-[300px] p-2 rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
                                     src={item.image}
                                     alt="" />
-                                <div class="flex flex-col bg-gray-100  justify-start p-6">
-                                    <h5
-                                        class="mb-2 text-xl font-medium text-neutral-800 dark:text-neutral-50">
-                                        {item.title}
-                                    </h5>
-                                    <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
-                                        {item.about}
-                                    </p>
-                                    <p class="text-xs text-neutral-500 dark:text-neutral-300">
-                                        
-                                    </p>
-                                </div>
+                            </Link>
                             </div>
-                        </div>
-                        </Link>
-                    ))}
-                </Slider>
+                        ))}
+                    </Slider>
+                </div>
             </div>
         </>
     )
