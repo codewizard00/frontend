@@ -123,13 +123,13 @@ const Register = () => {
                 <EmailVerify email={email} />
             </Modal>
             <NavBar/>
-            <section class="bg-navy h-[110vh] py-4 lg:py-[120px]">
+            <section class="bg-navy h-full min-h-[100vh] py-4 lg:py-[120px]">
                 <div class="container  mx-auto">
                     <div class="-mx-4  flex flex-wrap">
                         <div class="w-full px-4">
                             <div
                            
-                                className="relative mx-auto rounded-2xl  bg-cream max-w-[525px] overflow-hidden rounded-lg  py-16 px-10 text-center sm:px-12 md:px-[60px]"
+                                className="relative mx-auto rounded-2xl  bg-cream max-w-[500px] overflow-hidden rounded-lg  py-16 text-center sm:px-12 md:px-[40px]"
                             >
 
                                 <TabContext className="bg-cream" value={value}>
