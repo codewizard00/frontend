@@ -48,7 +48,7 @@ const BookCarousel = () => {
 
     return (
         <>
-            <div className="my-20 max-w-screen-xl w-[100%] md:w-full mx-auto">
+            <div className="my-20 max-w-screen-xl w-[90%] md:w-full mx-auto">
                 <h1 className="text-center text-2xl pb-10 font-[Hind] font-bold md:text-4xl">ई-पुस्तकें</h1>
                 <div className="max-w-screen-xl mx-auto">
                     <Slider ref={slider} {...settings} centerMode={false}>

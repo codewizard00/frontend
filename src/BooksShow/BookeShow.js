@@ -52,8 +52,8 @@ const BookShow = () => {
     const slider = useRef(null);
 
     return (
-        <div>
-            <div className='py-10 bg-gray-100'>
+        <div className='bg-gray-100 '>
+            <div className='py-10 w-[92%] mx-auto'>
 
                 <div className="max-w-screen-xl flex justify-between mx-auto">
                     <div className="flex">
