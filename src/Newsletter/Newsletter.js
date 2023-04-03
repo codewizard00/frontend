@@ -5,7 +5,7 @@ const Newsletter = () => {
 
                 <section class="mb-32 text-gray-800">
                    
-                    <div class="container text-gray-800 px-4 md:px-12">
+                    <div class="container text-gray-800 px-2 ">
                         <div
                             class="block rounded-lg shadow-lg py-10 md:py-12 px-4 md:px-6"
                             style={{
@@ -15,10 +15,10 @@ const Newsletter = () => {
                             }}
                         >
                             <div class="flex flex-wrap justify-center text-center lg:text-left">
-                                <div class="grow-0 shrink-0 basis-auto w-full px-6">
+                                <div class="grow-0 shrink-0 basis-auto w-full px-2">
                                     <div class="grid lg:grid-cols-2 gap-x-6 items-center">
                                         <div class="mb-10 lg:mb-0">
-                                            <h2 class="text-3xl font-[kamal] font-bold">
+                                            <h2 class="md:text-3xl  text-2xl font-[kamal] font-bold">
                                                 कोई भी अपडेट मिस न करें।
                                                 <br />
                                                 <span class="text-navy">न्यूज़लेटर की सदस्यता लें</span>
