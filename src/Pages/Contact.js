@@ -6,8 +6,8 @@ const Contact = () => {
         <>
             <NavBar />
             <section class="text-gray-600 body-font relative">
-                <h1 className="text-4xl text-center my-10">संपर्क करें</h1>
-                <div class="container max-w-screen-sm px-5 pb-24 mx-auto flex sm:flex-nowrap flex-wrap">
+                <h1 className="text-4xl text-center mt-4">संपर्क करें</h1>
+                <div class="container max-w-screen-sm pb-24 mx-auto flex sm:flex-nowrap flex-wrap">
                   
                     <div class="bg-white flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0">
                         <div class="relative rounded-lg bg-white p-8 shadow-lg sm:p-12">
