@@ -15,7 +15,7 @@ const AboutUs = () => {
                         <div class="flex-auto border rounded  border-gray-300">
                             <div class="flex md:flex-row flex-col items-center">
                                 <div class="flex-auto">
-                                    <div class="p-3 text-3xl text-gray-800 font">१. जन जन तक हिंदी का प्रचार प्रसार करना।</div>
+                                    <div class="p-3 text-xl md:text-3xl text-gray-800 font">१. जन जन तक हिंदी का प्रचार प्रसार करना।</div>
                                     {/* <div class="px-3 pb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam facilis, voluptates error alias dolorem praesentium sit soluta iure incidunt labore explicabo eaque, quia architecto veritatis dolores, enim consequatur nihil ipsum.</div> */}
                                 </div>
                             </div>
@@ -34,7 +34,7 @@ const AboutUs = () => {
                         <div class="flex-auto border rounded  border-gray-300">
                             <div class="flex md:flex-row flex-col items-center">
                                 <div class="flex-auto">
-                                    <div class="p-3 text-3xl text-gray-800 font">२. वर्तमान  के ख्यातिलब्ध गीतकारों एवं कवि-कवियत्रियों को मंच से जोड़ना एवं नवांकुर रचनाकारों को उनके मार्गदर्शन से अवगत कराना।</div>
+                                    <div class="p-3 text-xl md:text-3xl  text-gray-800 font">२. वर्तमान  के ख्यातिलब्ध गीतकारों एवं कवि-कवियत्रियों को मंच से जोड़ना एवं नवांकुर रचनाकारों को उनके मार्गदर्शन से अवगत कराना।</div>
                                     {/* <div class="px-3 pb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam facilis, voluptates error alias dolorem praesentium sit soluta iure incidunt labore explicabo eaque, quia architecto veritatis dolores, enim consequatur nihil ipsum.</div> */}
                                 </div>
                             </div>
@@ -55,7 +55,7 @@ const AboutUs = () => {
                         <div class="flex-auto border rounded  border-gray-300">
                             <div class="flex md:flex-row flex-col items-center">
                                 <div class="flex-auto">
-                                    <div class="p-3 text-3xl text-gray-800 font">३. हिंदी के लड़खड़ाते कदमों को संभाल कर उसे लक्ष्य की सही राह पर ले जाना।</div>
+                                    <div class="p-3 text-xl md:text-3xl  text-gray-800 font">३. हिंदी के लड़खड़ाते कदमों को संभाल कर उसे लक्ष्य की सही राह पर ले जाना।</div>
                                     {/* <div class="px-3 pb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam facilis, voluptates error alias dolorem praesentium sit soluta iure incidunt labore explicabo eaque, quia architecto veritatis dolores, enim consequatur nihil ipsum.</div> */}
                                 </div>
                             </div>
@@ -74,7 +74,7 @@ const AboutUs = () => {
                         <div class="flex-auto border rounded  border-gray-300">
                             <div class="flex md:flex-row flex-col items-center">
                                 <div class="flex-auto">
-                                    <div class="p-3 text-3xl text-gray-800 font">४. आगामी पीढ़ी से श्रेष्ठ साहित्य लाना और उन तक श्रेष्ठ साहित्य पहुंचाना।</div>
+                                    <div class="p-3 text-xl md:text-3xl  text-gray-800 font">४. आगामी पीढ़ी से श्रेष्ठ साहित्य लाना और उन तक श्रेष्ठ साहित्य पहुंचाना।</div>
                                     {/* <div class="px-3 pb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam facilis, voluptates error alias dolorem praesentium sit soluta iure incidunt labore explicabo eaque, quia architecto veritatis dolores, enim consequatur nihil ipsum.</div> */}
                                 </div>
                             </div>
@@ -96,7 +96,7 @@ const AboutUs = () => {
                         <div class="flex-auto border rounded  border-gray-300">
                             <div class="flex md:flex-row flex-col items-center">
                                 <div class="flex-auto">
-                                    <div class="p-3 text-3xl text-gray-800 font">५. शब्दों और भावों के सहजतम एवं सरलतम प्रयोगों को परिणामसहित उद्भाषित करना। </div>
+                                    <div class="p-3 text-xl md:text-3xl  text-gray-800 font">५. शब्दों और भावों के सहजतम एवं सरलतम प्रयोगों को परिणामसहित उद्भाषित करना। </div>
                                     {/* <div class="px-3 pb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam facilis, voluptates error alias dolorem praesentium sit soluta iure incidunt labore explicabo eaque, quia architecto veritatis dolores, enim consequatur nihil ipsum.</div> */}
                                 </div>
                             </div>
@@ -115,7 +115,7 @@ const AboutUs = () => {
                         <div class="flex-auto border rounded  border-gray-300">
                             <div class="flex md:flex-row flex-col items-center">
                                 <div class="flex-auto">
-                                    <div class="p-3 text-3xl text-gray-800 font">६. श्रेष्ठतम रचनाकारों की रचनाएं सुधि पाठकों तक प्रसारित।</div>
+                                    <div class="p-3 text-xl md:text-3xl  text-gray-800 font">६. श्रेष्ठतम रचनाकारों की रचनाएं सुधि पाठकों तक प्रसारित।</div>
                                     {/* <div class="px-3 pb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam facilis, voluptates error alias dolorem praesentium sit soluta iure incidunt labore explicabo eaque, quia architecto veritatis dolores, enim consequatur nihil ipsum.</div> */}
                                 </div>
                             </div>
@@ -136,7 +136,7 @@ const AboutUs = () => {
                         <div class="flex-auto border rounded  border-gray-300">
                             <div class="flex md:flex-row flex-col items-center">
                                 <div class="flex-auto">
-                                    <div class="p-3 text-3xl text-gray-800 font">७. हिंदी भाषा एवं हिंदी साहित्य के प्रति पाठकों में जागरूकता एवं रुचि जागृत करना।</div>
+                                    <div class="p-3 text-xl md:text-3xl  text-gray-800 font">७. हिंदी भाषा एवं हिंदी साहित्य के प्रति पाठकों में जागरूकता एवं रुचि जागृत करना।</div>
                                     {/* <div class="px-3 pb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam facilis, voluptates error alias dolorem praesentium sit soluta iure incidunt labore explicabo eaque, quia architecto veritatis dolores, enim consequatur nihil ipsum.</div> */}
                                 </div>
                             </div>
@@ -155,7 +155,7 @@ const AboutUs = () => {
                         <div class="flex-auto border rounded  border-gray-300">
                             <div class="flex md:flex-row flex-col items-center">
                                 <div class="flex-auto">
-                                    <div class="p-3 text-3xl text-gray-800 font">८. विश्व स्तर के दुर्लभ और असाधारण साहित्य लेखन को प्रेरित कर जन-जन को उपलब्ध कराना।</div>
+                                    <div class="p-3 text-xl md:text-3xl text-gray-800 font">८. विश्व स्तर के दुर्लभ और असाधारण साहित्य लेखन को प्रेरित कर जन-जन को उपलब्ध कराना।</div>
                                     {/* <div class="px-3 pb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam facilis, voluptates error alias dolorem praesentium sit soluta iure incidunt labore explicabo eaque, quia architecto veritatis dolores, enim consequatur nihil ipsum.</div> */}
                                 </div>
                             </div>
@@ -176,7 +176,7 @@ const AboutUs = () => {
                         <div class="flex-auto border rounded  border-gray-300">
                             <div class="flex md:flex-row flex-col items-center">
                                 <div class="flex-auto">
-                                    <div class="p-3 text-3xl text-gray-800 font">९. हिंदी पत्रिका और प्रकाशन को एक ऐसा आयाम देना जिसमे कुछ भी काम साधारण न होकर अतिविशिष्ट हो।</div>
+                                    <div class="p-3 text-xl md:text-3xl text-gray-800 font">९. हिंदी पत्रिका और प्रकाशन को एक ऐसा आयाम देना जिसमे कुछ भी काम साधारण न होकर अतिविशिष्ट हो।</div>
                                     {/* <div class="px-3 pb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam facilis, voluptates error alias dolorem praesentium sit soluta iure incidunt labore explicabo eaque, quia architecto veritatis dolores, enim consequatur nihil ipsum.</div> */}
                                 </div>
                             </div>
@@ -195,7 +195,7 @@ const AboutUs = () => {
                         <div class="flex-auto border rounded  border-gray-300">
                             <div class="flex md:flex-row flex-col items-center">
                                 <div class="flex-auto">
-                                    <div class="p-3 text-3xl text-gray-800 font">१॰. हिंदी व्याकरण, वर्तनी आदि की कसौटी पर खरे उतरते साहित्य को उसका खोता हुआ स्थान वापिस लौटाना।</div>
+                                    <div class="p-3 text-xl md:text-3xl text-gray-800 font">१॰. हिंदी व्याकरण, वर्तनी आदि की कसौटी पर खरे उतरते साहित्य को उसका खोता हुआ स्थान वापिस लौटाना।</div>
                                     {/* <div class="px-3 pb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam facilis, voluptates error alias dolorem praesentium sit soluta iure incidunt labore explicabo eaque, quia architecto veritatis dolores, enim consequatur nihil ipsum.</div> */}
                                 </div>
                             </div>

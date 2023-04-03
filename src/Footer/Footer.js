@@ -8,16 +8,16 @@ const Footer = () => {
                     <div class="-mx-4 flex flex-wrap">
                         <div class="w-full px-4 sm:w-2/3 lg:w-3/12">
                             <div class="mb-10 w-full">
-                                <a href="javascript:void(0)" class="mb-6 inline-block max-w-[160px]">
+                                <Link to="/" className="mb-6 inline-block">
                                     <img
                                         src="https://res.cloudinary.com/valarmorghullis/image/upload/v1674493289/Premsudha/%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A5%87%E0%A4%AE_%E0%A4%B8%E0%A5%81%E0%A4%A7%E0%A4%BE_9_szq4sd.jpg"
                                         alt="logo"
-                                        class="max-w-full"
+                                        className="w-full"
                                     />
-                                </a>
+                                </Link>
                                 <p class="text-body-color mb-7 text-base">
-                                    Sed ut perspiciatis undmnis is iste natus error sit amet voluptatem
-                                    totam rem aperiam.
+                                    प्रेम सुधा - साहित्य की अग्रणी पत्रिका व प्रकाशन मंडल
+                                    पत्रिका से जुड़ने हेतु अथवा पुस्तक प्रकाशन के लिए संपर्क करें।
                                 </p>
                                 <p class="text-dark flex items-center text-sm font-medium">
                                     <span class="text-primary mr-3">
@@ -38,7 +38,7 @@ const Footer = () => {
                                             />
                                         </svg>
                                     </span>
-                                    <span>+91 </span>
+                                    <span>+91 6232-725-233</span>
                                 </p>
                             </div>
                         </div>
@@ -70,7 +70,7 @@ const Footer = () => {
                                             कार्यक्रम
                                         </a>
                                     </li>
-                                    
+
                                 </ul>
                             </div>
                         </div>
@@ -83,7 +83,7 @@ const Footer = () => {
                                             href="javascript:void(0)"
                                             class="text-body-color hover:text-primary mb-2 inline-block text-base leading-loose"
                                         >
-                                           हमारे बारे में
+                                            हमारे बारे में
                                         </a>
                                     </li>
                                     <li>
@@ -91,10 +91,10 @@ const Footer = () => {
                                             href="javascript:void(0)"
                                             class="text-body-color hover:text-primary mb-2 inline-block text-base leading-loose"
                                         >
-                                           संपर्क करें
+                                            संपर्क करें
                                         </a>
                                     </li>
-                                  
+
                                     <li>
                                         <a
                                             href="javascript:void(0)"
@@ -115,7 +115,7 @@ const Footer = () => {
                                             href="javascript:void(0)"
                                             class="text-body-color hover:text-primary mb-2 inline-block text-base leading-loose"
                                         >
-                                           प्रीमियम समर्थन
+                                            प्रीमियम समर्थन
                                         </a>
                                     </li>
                                     <li>
@@ -134,7 +134,7 @@ const Footer = () => {
                                             संपादन मंडल
                                         </Link>
                                     </li>
-                                    
+
                                 </ul>
                             </div>
                         </div>

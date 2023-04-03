@@ -11,6 +11,7 @@ import EmailVerify from '../EmailVerify';
 import { Modal } from '@mui/material';
 import Toaster from '../toaster';
 import { useNavigate } from 'react-router-dom';
+import NavBar from '../Home/Component/Header';
 
 const Register = () => {
     const navigate = useNavigate();
@@ -121,16 +122,20 @@ const Register = () => {
             >
                 <EmailVerify email={email} />
             </Modal>
-            <section class="bg-[#F4F7FF] py-4 lg:py-[120px]">
-                <div class="container mx-auto">
-                    <div class="-mx-4 flex flex-wrap">
+            <NavBar/>
+            <section class="bg-navy h-[110vh] py-4 lg:py-[120px]">
+                <div class="container  mx-auto">
+                    <div class="-mx-4  flex flex-wrap">
                         <div class="w-full px-4">
                             <div
-                                class="relative mx-auto max-w-[525px] overflow-hidden rounded-lg bg-white py-16 px-10 text-center sm:px-12 md:px-[60px]"
+                           
+                                className="relative mx-auto rounded-2xl  bg-cream max-w-[525px] overflow-hidden rounded-lg  py-16 px-10 text-center sm:px-12 md:px-[60px]"
                             >
-                                <TabContext style={{ backgroundColor: "rgba(244,245,211,255)" }} value={value}>
-                                    <Box className="-mt-10 mb-4">
-                                        <TabList onChange={handleChange} aria-label="lab API tabs example">
+
+                                <TabContext className="bg-cream" value={value}>
+                                    
+                                    <Box className="-mt-10 bg-cream mb-4">
+                                        <TabList className='bg-cream' onChange={handleChange} aria-label="lab API tabs example">
                                             <Tab label="Sign Up" value="1" />
                                             <Tab label="Sign In" value="2" />
                                         </TabList>
@@ -155,7 +160,7 @@ const Register = () => {
                                                         onChange={(e) => { setEmailLogin(e.target.value) }}
                                                         type="text"
                                                         placeholder="Email"
-                                                        class="bordder-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none focus:border-primary focus-visible:shadow-none"
+                                                        class="border-navy border-2 border-solid w-full rounded-md  bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-navy outline-none "
                                                     />
                                                 </div>
                                                 <div class="mb-6">
@@ -163,9 +168,8 @@ const Register = () => {
                                                         value={passwordLogin}
                                                         onChange={(e) => { setPasswordLogin(e.target.value) }}
                                                         type="password"
-                                                        placeholder="Password"
-                                                        class="bordder-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none focus:border-primary focus-visible:shadow-none"
-                                                    />
+                                                        placeholder="Password"class="border-navy border-2 border-solid w-full rounded-md  bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-navy outline-none "
+                                                        />
                                                 </div>
                                                 <div class="mb-10">
                                                     <button
@@ -272,7 +276,7 @@ const Register = () => {
                                                         onChange={(e) => { setUserName(e.target.value) }}
                                                         type="text"
                                                         placeholder="Username"
-                                                        class="bordder-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none focus:border-primary focus-visible:shadow-none"
+                                                        class="border-navy border-2 border-solid w-full rounded-md bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-navy outline-none "
                                                     />
                                                 </div>
                                                 <div class="mb-6">
@@ -281,7 +285,7 @@ const Register = () => {
                                                         onChange={(e) => { setEmail(e.target.value) }}
                                                         type="text"
                                                         placeholder="Email"
-                                                        class="bordder-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none focus:border-primary focus-visible:shadow-none"
+                                                        class="border-navy border-2 border-solid w-full rounded-md bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-navy outline-none "
                                                     />
                                                 </div>
                                                 <div class="mb-6">
@@ -290,7 +294,7 @@ const Register = () => {
                                                         onChange={(e) => { setPhone(e.target.value) }}
                                                         type="text"
                                                         placeholder="Phone"
-                                                        class="bordder-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none focus:border-primary focus-visible:shadow-none"
+                                                        class="border-navy border-2 border-solid w-full rounded-md bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-navy outline-none "
                                                     />
                                                 </div>
                                                 <div class="mb-6">
@@ -299,14 +303,14 @@ const Register = () => {
                                                         onChange={(e) => { setPassword(e.target.value) }}
                                                         type="password"
                                                         placeholder="Password"
-                                                        class="bordder-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none focus:border-primary focus-visible:shadow-none"
+                                                        class="border-navy border-2 border-solid w-full rounded-md bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-navy outline-none "
                                                     />
                                                 </div>
                                                 <div class="mb-10">
                                                     <button
                                                         type="submit"
                                                         onClick={(e) => { signIn(e) }}
-                                                        class="bordder-primary w-full cursor-pointer rounded-md border bg-primary py-3 px-5 text-base text-white transition hover:bg-opacity-90"
+                                                        class="bordder-primary w-full cursor-pointer rounded-md bg-primary py-3 px-5 text-base text-white transition hover:bg-opacity-90"
                                                     >
                                                         Sign In
                                                     </button>
