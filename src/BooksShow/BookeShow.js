@@ -35,6 +35,7 @@ const BookShow = () => {
         GetAllBook();
     }, [])
 
+    console.log(data);
 
     var settings = {
         dots: false,
@@ -44,8 +45,8 @@ const BookShow = () => {
         autoplaySpeed: 1000,
         speed: 1000,
         slidesToScroll: 1,
-        responsive: [{ breakpoint: 200, settings: { slidesToShow: 2 } }, { breakpoint: 470, settings: { slidesToShow: 2 } }, { breakpoint: 768, settings: { slidesToShow: 4 } }, { breakpoint: 1024, settings: { slidesToShow: 5 } }, { breakpoint: 10000, settings: { slidesToShow: 6 } }],
-        centerMode: true
+        responsive: [{ breakpoint: 200, settings: { slidesToShow: 2 } }, { breakpoint: 470, settings: { slidesToShow: 2 } }, { breakpoint: 768, settings: { slidesToShow: 4 } }, { breakpoint: 1024, settings: { slidesToShow: 4 } }, { breakpoint: 10000, settings: { slidesToShow: 4 } }],
+        // centerMode: true
     };
 
     const slider = useRef(null);
@@ -71,19 +72,17 @@ const BookShow = () => {
                     <Slider ref={slider} {...settings} centerMode={false}>
                         {data && data.map((item, index) => (
                             <div class="container flex flex-wrap justify-center md:gap-20">
-                                <Link to={`bookpage/${item.id}`}>
+                                <Link to={`bookpage/${item.id}`} className="flex justify-center flex-col">
                                     <img
-                                        class="w-[300px] p-2 rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+                                        class="w-[200px] p-2 object-cover md:h-auto md:w-60 rounded-[20px]"
                                         src={item.image}
                                         alt="" />
                                     <div className='flex justify-between px-6 w-full'>
-                                        <div>
-                                        <p >{item.title}</p>
-                                        <p >{item.price}</p>
+                                        <div className='text-[#000] font-bold'>
+                                            <p className='text-[20px] md:text-[26px]'>{item.title}</p>
+                                            <p >{item.price}</p>
                                         </div>
-                                        <div className='mr-2'>
-                                            <button className='bg-navy text-white w-[60px] h-[30px] '>View</button>
-                                        </div>
+                                       
                                     </div>
                                 </Link>
                             </div>
